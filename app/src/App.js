@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './components/Home';
+import Header from './components/header/Header';
+import {useQuery, gql} from '@apollo/client';
+
+const g = gql`
+  query {
+  getProduct {
+    name
+    id
+  }
+}
+`
 
 function App() {
+
+  const {data} = useQuery(g);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      {data && data.getProduct.name}
+      <Home />
     </div>
   );
 }
