@@ -6,13 +6,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import client from './client';
 import { ApolloProvider } from '@apollo/client';
 import {BrowserRouter} from 'react-router-dom';
+import './css/stylesheet.min.css';
+import {ThemeProvider, unstable_createMuiStrictModeTheme} from '@material-ui/core';
+const theme = unstable_createMuiStrictModeTheme({
+  palette: {
+    primary: {
+      main: "#537072",
+      dark: "#2C4A52",
+      light: "#839B97",
+      contrastText: "#F4EBDB"
+    }
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+    <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
