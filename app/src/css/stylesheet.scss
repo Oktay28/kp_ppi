@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@import "./reset";
+@import "./products";
+
+body * {
+    font-family: 'Roboto', sans-serif;
+}
 
 .sidebar-open {
     #main-sidebar {
@@ -165,4 +173,8 @@ $huge-font-size: 40px;
             transition: 200ms;
         }
     }
+}
+
+#content {
+    padding-top: 15px;
 }

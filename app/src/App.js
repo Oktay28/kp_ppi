@@ -1,10 +1,13 @@
 import React, {useRef} from 'react';
-import Home from './components/home/Home';
 import Header from './components/partials/Header';
 import Sidebar from './components/partials/Sidebar';
 import SidebarToggler from './components/partials/SidebarToggler';
 import GoTop from './components/partials/GoTop';
 import HeaderObserver from './components/partials/HeaderObserver';
+import {Switch, Route} from 'react-router-dom';
+
+import Home from './components/home/Home';
+import Products from './components/products/Products';
 
 import {
   makeStyles
@@ -38,7 +41,15 @@ function App() {
       <main id="main" className={classes.root} >
         <Sidebar />
         <div id="content">
-          <Home />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+
+            <Route path="/products">
+              <Products />
+            </Route>
+          </Switch>
         </div>
 
         <SidebarToggler app={app}/>

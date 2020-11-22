@@ -1,4 +1,5 @@
 import React, {memo} from 'react';
+import {Link} from 'react-router-dom';
 import {
     makeStyles
 } from '@material-ui/core';
@@ -22,7 +23,8 @@ const useClasses = makeStyles((theme) => ({
         color: theme.palette.primary.contrastText,
         fontSize: "50px",
         marginBottom: "10px",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        textDecoration: "none"
     }
 }))
 
@@ -34,8 +36,12 @@ const Sidebar = () => {
         <div id="main-sidebar" className={classes.root}>
             <div className={classes.sidebarContent}>
                 <ul>
-                    <li className={classes.sidebarLink}>Home</li>
-                    <li className={classes.sidebarLink}>Shop</li>
+                    <li>
+                        <Link to="/" className={classes.sidebarLink}>Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/products"  className={classes.sidebarLink}>Shop</Link>
+                    </li>
                 </ul>
             </div>
         </div>
