@@ -13,6 +13,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Footer from './components/partials/Footer';
+import Contacts from './components/contacts/Contacts';
 
 const useClasses = makeStyles(theme => ({
   root: {
@@ -34,7 +35,7 @@ function App() {
   const classes = useClasses();
 
   return (
-    <div className="App" ref={app} className={classes.app} >
+    <div ref={app} className={classes.app} >
         <HeaderObserver>
           <Header app={app} />
         </HeaderObserver>
@@ -50,6 +51,11 @@ function App() {
             <Route path="/products">
               <Products />
             </Route>
+
+            <Route path="/contacts">
+              <Contacts />
+            </Route>
+
           </Switch>
         </div>
 

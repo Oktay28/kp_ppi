@@ -13,7 +13,8 @@ const useClasses = makeStyles({
         height: "100%",
         right: 0,
         display: "none",
-        zIndex: "5000"
+        zIndex: "5000",
+        cursor: "pointer"
     }
 })
 

@@ -42,6 +42,9 @@ const Sidebar = () => {
                     <li>
                         <Link to="/products"  className={classes.sidebarLink}>Shop</Link>
                     </li>
+                    <li>
+                        <Link to="/contacts"  className={classes.sidebarLink}>Contacts</Link>
+                    </li>
                 </ul>
             </div>
         </div>

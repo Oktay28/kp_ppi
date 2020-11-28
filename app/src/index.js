@@ -15,6 +15,13 @@ const theme = unstable_createMuiStrictModeTheme({
       light: "#839B97",
       contrastText: "#F4EBDB"
     }
+  },
+  overrides: {
+    MuiBackdrop: {
+      root: {
+        backgroundColor: 'rgba(0, 0, 0, 0.9)'
+      }
+    }
   }
 });
 
