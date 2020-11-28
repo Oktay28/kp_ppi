@@ -12,6 +12,7 @@ import Products from './components/products/Products';
 import {
   makeStyles
 } from '@material-ui/core';
+import Footer from './components/partials/Footer';
 
 const useClasses = makeStyles(theme => ({
   root: {
@@ -55,6 +56,7 @@ function App() {
         <SidebarToggler app={app}/>
       </main>
         <GoTop />
+        <Footer />
     </div>
   );
 }
