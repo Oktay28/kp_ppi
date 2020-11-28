@@ -4,6 +4,7 @@ import {
     makeStyles
 } from '@material-ui/core';
 import ProductItem from './ProductItem';
+import Filter from './Filter';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -17,6 +18,7 @@ const Products = () => {
 
     return (
         <div>
+            <Filter />
             <Grid container spacing={3} className={classes.container}>
                 <Grid item xs={12} sm={6} md={3} lg={2}>
                     <ProductItem />
