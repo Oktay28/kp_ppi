@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { 
     makeStyles,
     Grid,
@@ -9,10 +9,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Login from './Login';
 import Register from './Register';
+import Registered from './Registered';
 import ForgotPassword from './ForgotPassword';
 import Img from '../../partials/Img';
 import useUrlParams from '../../../hooks/useUrlParams';
 import {useLocation, Link, useHistory} from 'react-router-dom';
+import GlobalContext from '../../context/GlobalContext';
 
 const useStyles = makeStyles(theme => ({
     leftSide: {
@@ -22,7 +24,10 @@ const useStyles = makeStyles(theme => ({
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+        [theme.breakpoints.down("md")]: {
+            padding: "30px 20px"
+        }
     },
     leftTitle: {
         fontSize: "30px",
@@ -41,7 +46,10 @@ const useStyles = makeStyles(theme => ({
     },
     rightSide: {
         padding: "30px 50px",
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
+        [theme.breakpoints.down("md")]: {
+            padding: "20px"
+        }
     },
     links: {
         display: "flex",
@@ -49,6 +57,13 @@ const useStyles = makeStyles(theme => ({
     },
     loginLink: {
         color: theme.palette.primary.contrastText
+    },
+    authLogo: {
+        maxWidth: "100%",
+        [theme.breakpoints.down("xs")]: {
+            width: "100px",
+            objectFit: "cover"
+        }
     }
 }))
 
@@ -59,6 +74,7 @@ const Auth = () => {
     const {pathname} = useLocation();
     const {push} = useHistory();
     const modal = params.get("modal");
+    const {registered} = useContext(GlobalContext);
 
     let page = null;
     let isAuth = false;
@@ -69,7 +85,11 @@ const Auth = () => {
             break;
         }
         case "register": {
-            page = <Register />;
+            if(registered) {
+                page = <Registered />;
+            } else {
+                page = <Register />;
+            }
             isAuth = true;
             break;
         }
@@ -90,16 +110,15 @@ const Auth = () => {
                 <IconButton color="inherit">
                     <ExitToAppIcon />
                 </IconButton>
-                </Link>
-         
+            </Link>
 
-            <Dialog open={isAuth} onClose={handleClose} maxWidth="md" fullWidth className={classes.dialog}>
+            <Dialog open={isAuth} onClose={handleClose} maxWidth="md" className={classes.dialog}>
           <DialogContent className="p-0">
 
             <Grid container>
                 <Grid item xs={12} md={5} className={classes.leftSide}>
                     <div>
-                    <Img src="/public/images/logo.png" />
+                    <Img src="/public/images/logo.png" className={classes.authLogo} />
                     </div>
                     <div className={classes.links}>
                         <Link to={`${pathname}?modal=login`} className={`${classes.leftTitle} ${modal == "login" ? classes.active : ""}`}>

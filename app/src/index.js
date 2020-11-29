@@ -5,9 +5,13 @@ import * as serviceWorker from './serviceWorker';
 import client from './client';
 import { ApolloProvider } from '@apollo/client';
 import {BrowserRouter} from 'react-router-dom';
-import './css/stylesheet.min.css';
 import {ThemeProvider, unstable_createMuiStrictModeTheme} from '@material-ui/core';
+
+import 'react-toastify/dist/ReactToastify.css';
+import './css/stylesheet.min.css';
 import GlobalStyles from './GlobalStyles';
+import {GlobalProvider} from './components/context/GlobalContext';
+
 const theme = unstable_createMuiStrictModeTheme({
   palette: {
     primary: {
@@ -22,6 +26,14 @@ const theme = unstable_createMuiStrictModeTheme({
       root: {
         backgroundColor: 'rgba(0, 0, 0, 0.9)'
       }
+    },
+    MuiDialog: {
+      paper: {
+        "@media all and (max-width: 600px)": {
+          margin: "100px 10px 50px",
+          maxHeight: "calc( 100% - 120px ) !important"
+        }
+      }
     }
   }
 });
@@ -29,12 +41,14 @@ const theme = unstable_createMuiStrictModeTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-    <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-        <GlobalStyles />
-      </ThemeProvider>
+    <GlobalProvider>
+      <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+          <GlobalStyles />
+        </ThemeProvider>
+      </GlobalProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

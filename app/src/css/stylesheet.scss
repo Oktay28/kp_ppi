@@ -2,6 +2,7 @@
 
 @import "./reset";
 @import "./products";
+@import "./loader";
 
 body * {
     font-family: 'Roboto', sans-serif;
@@ -213,4 +214,14 @@ $huge-font-size: 40px;
 
 .text-center {
     text-align: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+#cart-dialog {
+    .MuiPaper-root {
+        max-height: 100% !important;
+    }
 }

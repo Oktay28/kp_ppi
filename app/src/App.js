@@ -1,10 +1,12 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React from 'react';
 import Header from './components/partials/Header';
 import Sidebar from './components/partials/Sidebar';
 import SidebarToggler from './components/partials/SidebarToggler';
 import GoTop from './components/partials/GoTop';
 import HeaderObserver from './components/partials/HeaderObserver';
 import {Switch, Route} from 'react-router-dom';
+
+import { ToastContainer } from 'react-toastify';
 
 import Home from './components/home/Home';
 import Products from './components/products/Products';
@@ -33,14 +35,13 @@ const useClasses = makeStyles(theme => ({
 
 function App() {
 
-  const app = useRef();
   const classes = useClasses();
   const params = useUrlParams();
   const modal = params.get("modal");
   const isMenu = (modal == "menu");
 
   return (
-    <div ref={app} className={`${classes.app} ${isMenu ? "sidebar-open" : ""}`} >
+    <div className={`${classes.app} ${isMenu ? "sidebar-open" : ""}`} >
         <HeaderObserver>
           <Header/>
         </HeaderObserver>
@@ -48,6 +49,7 @@ function App() {
       <main id="main" className={classes.root} >
         <Sidebar />
         <div id="content">
+          <ToastContainer />
           <Switch>
             <Route exact path="/">
               <Home />

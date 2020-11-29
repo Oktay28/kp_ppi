@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
       flex: 1,
     },
+    cartDialog: {}
   }));
   
   const Transition = React.forwardRef(function Transition(props, ref) {
@@ -53,7 +54,7 @@ const Cart = () => {
                 </IconButton>
             </Link>
 
-            <Dialog fullScreen open={isCart} onClose={handleClose} TransitionComponent={Transition} style={{zIndex: "30000"}}>
+            <Dialog fullScreen open={isCart} onClose={handleClose} TransitionComponent={Transition} style={{zIndex: "30000"}} id="cart-dialog">
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
