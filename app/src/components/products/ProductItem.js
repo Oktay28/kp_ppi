@@ -60,7 +60,7 @@ const ProductItem = () => {
                 Short text here
             </p>
             <div>
-                <img alt="product" ssrc="https://wilderness-production.imgix.net/80a27c3287024f94f51fcd34e06d72aa/Marmot-Eldridge.jpg?auto=compress%2Cformat&fit=crop&h=500&ixlib=php-3.3.0&w=500&wpsize=square_med" className={classes.productImage}/>
+                <img alt="product" src="https://wilderness-production.imgix.net/80a27c3287024f94f51fcd34e06d72aa/Marmot-Eldridge.jpg?auto=compress%2Cformat&fit=crop&h=500&ixlib=php-3.3.0&w=500&wpsize=square_med" className={classes.productImage}/>
             </div>
             <div className={classes.productFooter}>
                 <span className={classes.productPrice}>

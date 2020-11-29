@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import Header from './components/partials/Header';
 import Sidebar from './components/partials/Sidebar';
 import SidebarToggler from './components/partials/SidebarToggler';
@@ -8,6 +8,8 @@ import {Switch, Route} from 'react-router-dom';
 
 import Home from './components/home/Home';
 import Products from './components/products/Products';
+
+import useUrlParams from './hooks/useUrlParams';
 
 import {
   makeStyles
@@ -33,11 +35,14 @@ function App() {
 
   const app = useRef();
   const classes = useClasses();
+  const params = useUrlParams();
+  const modal = params.get("modal");
+  const isMenu = (modal == "menu");
 
   return (
-    <div ref={app} className={classes.app} >
+    <div ref={app} className={`${classes.app} ${isMenu ? "sidebar-open" : ""}`} >
         <HeaderObserver>
-          <Header app={app} />
+          <Header/>
         </HeaderObserver>
 
       <main id="main" className={classes.root} >
@@ -59,7 +64,7 @@ function App() {
           </Switch>
         </div>
 
-        <SidebarToggler app={app}/>
+        <SidebarToggler/>
       </main>
         <GoTop />
         <Footer />

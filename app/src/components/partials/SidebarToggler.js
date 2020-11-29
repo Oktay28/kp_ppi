@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import {
     makeStyles
 } from '@material-ui/core';
+import {useLocation, Link} from 'react-router-dom';
 
 const useClasses = makeStyles({
     sidebarToggle: {
@@ -18,13 +19,14 @@ const useClasses = makeStyles({
     }
 })
 
-const SidebarToggler = ({app}) => {
+const SidebarToggler = () => {
     const classes = useClasses();
+    const {pathname} = useLocation();
 
     return (
-        <div id="sidebar-toggler" className={classes.sidebarToggle} onClick={() => app.current.classList.toggle("sidebar-open")}>
+        <Link to={pathname} id="sidebar-toggler" className={classes.sidebarToggle}>
             
-        </div>
+        </Link>
     );
 }
 

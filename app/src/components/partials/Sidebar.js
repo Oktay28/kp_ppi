@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import {
     makeStyles
 } from '@material-ui/core';
@@ -22,14 +22,24 @@ const useClasses = makeStyles((theme) => ({
     sidebarLink: {
         color: theme.palette.primary.contrastText,
         fontSize: "50px",
-        marginBottom: "10px",
+        marginBottom: "20px",
         fontWeight: "bold",
-        textDecoration: "none"
+        textDecoration: "none",
+        display: "inline-block"
+    },
+    activeSidebar: {
+        color: theme.palette.primary.dark
     }
 }))
 
-const Sidebar = () => {
+const SidebarLink = ({to, children, ...rest}) => {
+    const classes = useClasses();
+    return (
+        <NavLink to={to} className={classes.sidebarLink} activeClassName={classes.activeSidebar} {...rest}>{children}</NavLink>
+    )
+}
 
+const Sidebar = () => {
     const classes = useClasses();
 
     return (
@@ -37,13 +47,13 @@ const Sidebar = () => {
             <div className={classes.sidebarContent}>
                 <ul>
                     <li>
-                        <Link to="/" className={classes.sidebarLink}>Home</Link>
+                        <SidebarLink to="/" exact>Home</SidebarLink>
                     </li>
                     <li>
-                        <Link to="/products"  className={classes.sidebarLink}>Shop</Link>
+                        <SidebarLink to="/products">Shop</SidebarLink>
                     </li>
                     <li>
-                        <Link to="/contacts"  className={classes.sidebarLink}>Contacts</Link>
+                        <SidebarLink to="/contacts">Contacts</SidebarLink>
                     </li>
                 </ul>
             </div>

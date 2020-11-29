@@ -3,11 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Cart from './cart/Cart';
 import Search from './search/Search';
+import Auth from './auth/Auth';
+import Img from '../partials/Img';
+import useUrlParams from '../../hooks/useUrlParams';
+import {useLocation, Link, useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -24,30 +27,35 @@ const useStyles = makeStyles((theme) => ({
   },
   headerIcons: {
     display: "flex"
+  },
+  logo: {
+    height: "100%",
+    width: "70px"
   }
 }));
 
-function Header({app}) {
+function Header() {
   const classes = useStyles();
+  const params = useUrlParams();
+  const {pathname} = useLocation();
+  const {push} = useHistory();
+  const modal = params.get("modal");
 
-  const menuId = 'primary-search-account-menu';
+  const isMenu = (modal == "menu");
 
   return (
     <div className={classes.grow}>
       <AppBar position="fixed" style={{zIndex: "15000"}}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={() => app.current.classList.toggle("sidebar-open")}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography>
+        <Link to={isMenu ? pathname : `${pathname}?modal=menu`} className={`header-link ${isMenu ? "active-header-link" : ""}`}>
+            <IconButton color="inherit">
+              <MenuIcon />
+            </IconButton>
+          </Link>
+
+          <Link to="/">
+            <Img src="/public/images/logo.png" className={classes.logo} />
+          </Link>
 
           <div className={classes.grow} />
           <div className={classes.headerIcons}>
@@ -56,12 +64,13 @@ function Header({app}) {
             <IconButton
               edge="end"
               aria-label="account of current user"
-              aria-controls={menuId}
               aria-haspopup="true"
               color="inherit"
             >
               <AccountCircle />
             </IconButton>
+
+            <Auth />
           </div>
         </Toolbar>
       </AppBar>

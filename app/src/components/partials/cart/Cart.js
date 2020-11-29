@@ -13,7 +13,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import Badge from '@material-ui/core/Badge';
+import useUrlParams from '../../../hooks/useUrlParams';
+import {useLocation, Link, useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -33,21 +34,26 @@ const useStyles = makeStyles((theme) => ({
 const Cart = () => {
 
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-  
+    const params = useUrlParams();
+    const {pathname} = useLocation();
+    const {push} = useHistory();
+    const modal = params.get("modal");
+
+    const isCart = (modal == "cart");
+
     const handleClose = () => {
-      setOpen(false);
+      push(pathname);
     };
 
     return (
         <div>
-            <IconButton color="inherit" onClick={() => setOpen(true)}>
-              <Badge color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
+           <Link to={isCart ? pathname : `${pathname}?modal=cart`} className={`header-link ${isCart ? "active-header-link" : ""}`}>
+                <IconButton color="inherit">
+                  <ShoppingCartIcon />
+                </IconButton>
+            </Link>
 
-            <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} style={{zIndex: "30000"}}>
+            <Dialog fullScreen open={isCart} onClose={handleClose} TransitionComponent={Transition} style={{zIndex: "30000"}}>
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">

@@ -7,6 +7,7 @@ import { ApolloProvider } from '@apollo/client';
 import {BrowserRouter} from 'react-router-dom';
 import './css/stylesheet.min.css';
 import {ThemeProvider, unstable_createMuiStrictModeTheme} from '@material-ui/core';
+import GlobalStyles from './GlobalStyles';
 const theme = unstable_createMuiStrictModeTheme({
   palette: {
     primary: {
@@ -32,6 +33,7 @@ ReactDOM.render(
         <BrowserRouter>
           <App />
         </BrowserRouter>
+        <GlobalStyles />
       </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>,

@@ -1,6 +1,5 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -9,27 +8,39 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import useUrlParams from '../../../hooks/useUrlParams';
+import {useLocation, Link, useHistory} from 'react-router-dom';
+import {
+  makeStyles
+} from '@material-ui/core';
+
+const useStyles = makeStyles(theme => ({
+
+}));
 
 const Search = () => {
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
+    const params = useUrlParams();
+    const {pathname} = useLocation();
+    const {push} = useHistory();
+    const modal = params.get("modal");
+    const classes = useStyles();
   
     const handleClose = () => {
-      setOpen(false);
+      push(pathname);
     };
+
+    const isSearch = (modal == "search");
   
     return (
       <div>
-          <IconButton color="inherit" onClick={handleClickOpen}>
-            <Badge color="secondary">
+          <Link to={isSearch ? pathname : `${pathname}?modal=search`} className={`header-link ${isSearch ? "active-header-link" : ""}`}>
+            <IconButton color="inherit">
                 <SearchIcon />
-            </Badge>
-          </IconButton>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+            </IconButton>
+          </Link>
+
+        <Dialog open={isSearch} onClose={handleClose}>
+          <DialogTitle>Subscribe</DialogTitle>
           <DialogContent>
             <DialogContentText>
               To subscribe to this website, please enter your email address here. We will send updates
@@ -44,14 +55,6 @@ const Search = () => {
               fullWidth
             />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={handleClose} color="primary">
-              Subscribe
-            </Button>
-          </DialogActions>
         </Dialog>
       </div>
     );

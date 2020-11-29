@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors());
+app.use("/public", express.static("./public"));
 
 const server = new ApolloServer({
     typeDefs,
@@ -27,6 +28,10 @@ const server = new ApolloServer({
             models
         };
     }
+})
+
+app.get("/", (req, res) => {
+    return res.send("asd")
 })
 
 server.applyMiddleware({app})

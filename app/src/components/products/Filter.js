@@ -1,4 +1,4 @@
-import React, {useState, usestate} from 'react';
+import React from 'react';
 
 import {
     makeStyles,
@@ -12,6 +12,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded';
 
+import useUrlParams from '../../hooks/useUrlParams';
+import {useLocation, Link, useHistory} from 'react-router-dom';
+
 const useStyles = makeStyles(theme => ({
     button: {
         display: "flex",
@@ -20,6 +23,7 @@ const useStyles = makeStyles(theme => ({
         transition: "all .3s",
         color: theme.palette.primary.dark,
         fontWeight: "bold",
+        textDecoration: "none",
         "&:hover": {
             transform: "scale(1.1)"
         }
@@ -34,25 +38,27 @@ const useStyles = makeStyles(theme => ({
 const Filter = () => {
 
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
-    const handleClickOpen = () => {
-        setOpen(true);
-      };
-    
-      const handleClose = () => {
-        setOpen(false);
-      };
+    const params = useUrlParams();
+    const {pathname} = useLocation();
+    const {push} = useHistory();
+    const modal = params.get("modal");
+
+    const handleClose = () => {
+      push(pathname);
+    };
+
+    const isFilter = (modal == "filter");
 
     return (
         <div>
             <div className={classes.filter}>
-                <span className={classes.button} role="button" onClick={handleClickOpen}>
+                <Link className={classes.button} role="button" to={isFilter ? pathname : `${pathname}?modal=filter`}>
                     <FilterListRoundedIcon /> Filter
-                </span>
+                </Link>
             </div>
             <Dialog
             maxWidth="md"
-        open={open}
+        open={isFilter}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
