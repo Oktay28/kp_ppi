@@ -14,7 +14,8 @@ const userType = gql`
     }
 
     extend type Query {
-        me: User
+        me(id: ID!): User
+        login(email: String!, password: String!): User
     }
 
     extend type Mutation {
@@ -26,8 +27,24 @@ const userType = gql`
 `;
 
 const userQuery = {
-    me: async (parent, args, {models}) => {
-        
+    me: async (parent, {id}, {models}) => {
+        return await models.User.findOne({
+            where: {
+                id
+            },
+            raw: true,
+            limit: 1
+        })
+    },
+    login: async (parent, args, {models}) => {
+        const user = await models.User.findOne({
+            where: args
+        })
+        if(!user) {
+            throw new Error("Wrong email or password!")
+        }
+
+        return user;
     }
 }
 

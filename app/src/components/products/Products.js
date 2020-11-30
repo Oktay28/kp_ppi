@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     Grid,
     makeStyles
 } from '@material-ui/core';
 import ProductItem from './ProductItem';
 import Filter from './Filter';
-
+import {useProductsLazyQuery} from './graphql';
 const useStyles = makeStyles(theme => ({
     container: {
         padding: "30px"
@@ -15,6 +15,11 @@ const useStyles = makeStyles(theme => ({
 const Products = () => {
 
     const classes = useStyles();
+    const [fetchProducts, {data}] = useProductsLazyQuery();
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
 
     return (
         <div>

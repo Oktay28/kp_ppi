@@ -8,6 +8,16 @@ const REGISTER_USER = gql`
     }
 `;
 
+const LOGIN_USER = gql`
+    query loginQuery($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            id
+            name
+        }
+    }
+`;
+
 export {
-    REGISTER_USER
+    REGISTER_USER,
+    LOGIN_USER
 }

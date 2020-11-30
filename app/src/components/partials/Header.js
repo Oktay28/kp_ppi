@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,7 +10,8 @@ import Search from './search/Search';
 import Auth from './auth/Auth';
 import Img from '../partials/Img';
 import useUrlParams from '../../hooks/useUrlParams';
-import {useLocation, Link, useHistory} from 'react-router-dom';
+import {useLocation, Link, NavLink} from 'react-router-dom';
+import GlobalContext from '../context/GlobalContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -38,8 +39,8 @@ function Header() {
   const classes = useStyles();
   const params = useUrlParams();
   const {pathname} = useLocation();
-  const {push} = useHistory();
   const modal = params.get("modal");
+  const {user} = useContext(GlobalContext);
 
   const isMenu = (modal == "menu");
 
@@ -61,16 +62,25 @@ function Header() {
           <div className={classes.headerIcons}>
               <Search />
               <Cart />
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+              {
+                user ?
+                <NavLink to="/profile" className="header-link" activeClassName="active-header-link">
+                <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle />
+                </IconButton> 
+                </NavLink>
 
-            <Auth />
+              :
+                <Auth />
+              }
+
+
+        
           </div>
         </Toolbar>
       </AppBar>

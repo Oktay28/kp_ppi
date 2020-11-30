@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         old_price: {
             type: DataTypes.FLOAT
+        },
+        is_featured: {
+            type: DataTypes.BOOLEAN
         }
     }, {
         tableName: "products"

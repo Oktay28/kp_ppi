@@ -15,9 +15,7 @@ import {
 } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
 import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded';
-
 import useUrlParams from '../../hooks/useUrlParams';
 import {useLocation, Link, useHistory} from 'react-router-dom';
 
@@ -59,9 +57,16 @@ const Filter = () => {
     const {pathname} = useLocation();
     const {push} = useHistory();
     const modal = params.get("modal");
-    const [form, setForm] = useState({
-      moneyRange: [0, 10000]
-    });
+
+    const defaultForm = {
+      name: params.get("name") || "",
+      new: params.get("new") || "",
+      featured: params.get("featured") || "",
+      min: params.get("min") || 0,
+      max: params.get("max") || 10000
+    };
+
+    const [form, setForm] = useState(defaultForm);
 
     const handleClose = () => {
       push(pathname);
@@ -86,8 +91,18 @@ const Filter = () => {
     function rangeChange(event, newValue) {
       setForm(prevForm => ({
         ...prevForm,
-        moneyRange: newValue
+        min: newValue[0],
+        max: newValue[1]
       }))
+    }
+
+    function submitHandler(event) {
+      event.preventDefault();
+      push(`${pathname}?${new URLSearchParams(form).toString()}`)
+    }
+
+    function reset() {
+      setForm(defaultForm)
     }
 
     const isFilter = (modal == "filter");
@@ -106,11 +121,11 @@ const Filter = () => {
           >
         <DialogTitle className="text-center">Products filter</DialogTitle>
 
-        <form className={classes.innerFilter}>
+        <form className={classes.innerFilter} onSubmit={submitHandler}>
 
         <div className="mb-30">
         <FormControl component="fieldset" fullWidth>
-            <TextField label="Name" variant="outlined" value={form.name} onChange={changeHandler}/>
+            <TextField label="Name" name="name" variant="outlined" value={form.name} onChange={changeHandler}/>
           </FormControl>
         </div>
 
@@ -144,7 +159,7 @@ const Filter = () => {
           <FormControl component="fieldset" fullWidth>
             <FormLabel component="legend">Money Range (лв.)</FormLabel>
             <Slider
-              value={form.moneyRange}
+              value={[form.min, form.max]}
               onChange={rangeChange}
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
@@ -154,17 +169,17 @@ const Filter = () => {
               className="mb-15"
             />
             <div className="d-flex">
-              <TextField label="Min" type="number" variant="outlined" value={form.moneyRange[0]} onChange={(event) => rangeChange(event, [+event.target.value, form.moneyRange[1]])} />
-              <TextField label="Max" type="number" variant="outlined" value={form.moneyRange[1]} onChange={(event) => rangeChange(event, [form.moneyRange[0], +event.target.value])}/>
+              <TextField label="Min" type="number" variant="outlined" value={form.min} onChange={(event) => rangeChange(event, [+event.target.value, form.max])} />
+              <TextField label="Max" type="number" variant="outlined" value={form.max} onChange={(event) => rangeChange(event, [form.min, +event.target.value])}/>
             </div>
           </FormControl>
         </div>
       <div className="d-flex justify-content-between">
-      <Button variant="contained" color="primary" size="large">
+        <Button variant="contained" color="primary" size="large" type="submit">
           Filter
         </Button>
 
-          <Button variant="contained" color="primary" className={classes.resetButton}>
+          <Button variant="contained" color="primary" className={classes.resetButton} onClick={reset}>
           Reset
         </Button>
       </div>
