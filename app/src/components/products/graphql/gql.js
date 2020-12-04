@@ -20,8 +20,9 @@ const PRODUCTS = gql`
             page: $page
         }) {
             products {
+                id
                 name
-                
+                short_description
             }
             count
         }

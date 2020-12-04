@@ -19,6 +19,7 @@ import {
 import Footer from './components/partials/Footer';
 import Contacts from './components/contacts/Contacts';
 import Profile from './components/profile/Profile';
+import Product from './components/product/Product';
 
 const useClasses = makeStyles(theme => ({
   root: {
@@ -63,6 +64,10 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+
+            <Route path="/products/:productId">
+              <Product />
             </Route>
 
             <Route path="/products">

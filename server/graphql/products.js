@@ -5,6 +5,8 @@ const productType = gql`
     type Product {
         id: ID!
         name: String
+        short_description: String
+        price: String
     }
 
     type Products {
@@ -24,14 +26,19 @@ const productType = gql`
 
     extend type Query {
         products(filter: ProductsFilter): Products
-        getProduct: Product
+        product(id: ID!): Product
     }
 
 `
 
 const productQuery = {
-    getProduct: async(parent, args, {models}) => {
-        const product = await models.Products.findOne({raw: true});
+    product: async(parent, {id}, {models}) => {
+        const product = await models.Products.findOne({
+            where: {
+                id
+            },
+            raw: true
+        });
         return product;
     },
     products: async(parent, {filter}, {models}) => {

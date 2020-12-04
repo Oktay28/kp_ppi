@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         is_featured: {
             type: DataTypes.BOOLEAN
+        },
+        short_text: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     }, {
         tableName: "products"

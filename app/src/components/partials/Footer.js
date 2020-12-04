@@ -5,10 +5,12 @@ import {
     makeStyles,
     IconButton
 } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import Img from '../partials/Img';
 
 const useStyles = makeStyles(theme => ({
     footer: {
@@ -35,6 +37,16 @@ const useStyles = makeStyles(theme => ({
     footerBottom: {
         backgroundColor: theme.palette.primary.dark,
         padding: "10px"
+    },
+    footerLogo: {
+        width: "150px"
+    },
+    footerLink: {
+        color: theme.palette.primary.contrastText,
+        textDecoration: "none",
+        fontSize: "20px",
+        marginBottom: "10px",
+        display: "inline-block"
     }
 }))
 
@@ -62,6 +74,15 @@ const FooterText = ({children}) => {
     )
 }
 
+const FooterLink = ({children, to}) => {
+    const classes = useStyles();
+    return (
+        <div>
+            <Link to={to} className={classes.footerLink}>{children}</Link>
+        </div>
+    )
+}
+
 const Footer = () => {
 
     const classes = useStyles();
@@ -71,15 +92,9 @@ const Footer = () => {
             <div className={classes.footerTop}>
                 <Grid container spacing={3} justify="center">
                    <FooterCol>
-                       <FooterTitle>
-                           Contact
-                       </FooterTitle>
-                       <FooterText>
-                           asd
-                       </FooterText>
-                       <FooterText>
-                           asdasdasd
-                       </FooterText>
+                        <Link to="/">
+                            <Img src="/public/images/logo.png" className={classes.footerLogo} />
+                        </Link>
                    </FooterCol>
 
                    <FooterCol>
@@ -101,17 +116,25 @@ const Footer = () => {
 
                    <FooterCol>
                        <FooterTitle>
-                           About us
+                            Quick Links
                        </FooterTitle>
                        <FooterText>
-                           Who are we?
+                            <FooterLink to="/">
+                                Home
+                            </FooterLink>
+                            <FooterLink to="/products">
+                                Products
+                            </FooterLink>
+                            <FooterLink to="/contacts">
+                                Contacts
+                            </FooterLink>
                        </FooterText>
                    </FooterCol>
                 </Grid>
             </div>
             <div className={classes.footerBottom}>
                 <FooterText>
-                    &copy; 2020
+                    Iron Wolf &copy; 2020 All Rights Reserved
                 </FooterText>
             </div>
         </footer>

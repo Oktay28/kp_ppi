@@ -1,7 +1,9 @@
 import React from 'react';
 import {
-    makeStyles
+    makeStyles,
+    Grid
 } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     productItem: {
@@ -44,34 +46,43 @@ const useStyles = makeStyles(theme => ({
     },
     productFooter: {
         marginTop: "30px"
+    },
+    productLink: {
+        color: theme.palette.primary.dark,
+        textDecoration: "none"
     }
 }))
 
-const ProductItem = () => {
+const ProductItem = ({product = {}}) => {
 
     const classes = useStyles();
 
     return (
-        <div className={classes.productItem}>
-            <h4 className={classes.productTitle}>
-                Product name
-            </h4>
-            <p className={classes.shortText}>
-                Short text here
-            </p>
-            <div>
-                <img alt="product" src="https://wilderness-production.imgix.net/80a27c3287024f94f51fcd34e06d72aa/Marmot-Eldridge.jpg?auto=compress%2Cformat&fit=crop&h=500&ixlib=php-3.3.0&w=500&wpsize=square_med" className={classes.productImage}/>
-            </div>
-            <div className={classes.productFooter}>
-                <span className={classes.productPrice}>
-                    20.99 лв.
-                </span>
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+            <Link to={`/products/${product.id}`} className={classes.productLink}>
+            <div className={classes.productItem}>
+                <h4 className={classes.productTitle}>
+                    {product.name}
+                </h4>
+                <p className={classes.shortText}>
+                    {product.short_description}
+                </p>
+                <div>
+                    <img alt="product" src="https://wilderness-production.imgix.net/80a27c3287024f94f51fcd34e06d72aa/Marmot-Eldridge.jpg?auto=compress%2Cformat&fit=crop&h=500&ixlib=php-3.3.0&w=500&wpsize=square_med" className={classes.productImage}/>
+                </div>
+                <div className={classes.productFooter}>
+                    <span className={classes.productPrice}>
+                        20.99 лв.
+                    </span>
 
-                <span className={classes.oldPrice}>
-                    30.99 лв.
-                </span>
+                    <span className={classes.oldPrice}>
+                        30.99 лв.
+                    </span>
+                </div>
             </div>
-        </div>
+            </Link>
+        </Grid>
+
     );
 }
 

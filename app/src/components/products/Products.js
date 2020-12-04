@@ -21,22 +21,22 @@ const Products = () => {
         fetchProducts();
     }, []);
 
+    if(!data) {
+        return "loading...";
+    }
+
+    console.log(data);
+    const products = data.products?.products || [];
+
     return (
         <div>
             <Filter />
             <Grid container spacing={3} className={classes.container}>
-                <Grid item xs={12} sm={6} md={3} lg={2}>
-                    <ProductItem />
-                </Grid>
-                <Grid item xs={12} sm={6} md={3} lg={2}>
-                    <ProductItem />
-                </Grid>
-                <Grid item xs={12} sm={6} md={3} lg={2}>
-                    <ProductItem />
-                </Grid>
-                <Grid item xs={12} sm={6} md={3} lg={2}>
-                    <ProductItem />
-                </Grid>
+
+                {
+                    products.map(product => <ProductItem product={product} key={product.id}/>)
+                }
+
             </Grid>
         </div>
     );

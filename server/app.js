@@ -31,7 +31,7 @@ const server = new ApolloServer({
 })
 
 app.get("/", (req, res) => {
-    return res.send("asd")
+    return res.send("asdaa")
 })
 
 server.applyMiddleware({app})
