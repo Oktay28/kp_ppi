@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,8 +10,12 @@ import Search from './search/Search';
 import Auth from './auth/Auth';
 import Img from '../partials/Img';
 import useUrlParams from '../../hooks/useUrlParams';
-import {useLocation, Link, NavLink} from 'react-router-dom';
+import {useLocation, Link, NavLink, useHistory} from 'react-router-dom';
 import GlobalContext from '../context/GlobalContext';
+import {
+  Menu,
+MenuItem
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -32,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: "100%",
     width: "70px"
+  },
+  profileDropdown: {
+    zIndex: "30000 !important",
+    "& .MuiPaper-root": {
+      top: "60px !important"
+    }
   }
 }));
 
@@ -39,8 +49,29 @@ function Header() {
   const classes = useStyles();
   const [modal, addModal, removeModal] = useUrlParams();
   const {user} = useContext(GlobalContext);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const {push} = useHistory();
 
   const isMenu = (modal == "menu");
+
+  function handleMenuClose() {
+    setAnchorEl(null);
+  }
+
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const logout = () => {
+
+  }
+
+  const goToProfile = () => {
+    push("/profile");
+    handleMenuClose();
+  }
+
+  const menuId = "profile-dropdown";
 
   return (
     <div className={classes.grow}>
@@ -62,26 +93,39 @@ function Header() {
               <Cart />
               {
                 user ?
-                <NavLink to="/profile" className="header-link" activeClassName="active-header-link">
                 <IconButton
                 edge="end"
-                aria-label="account of current user"
-                aria-haspopup="true"
+                aria-label="profile dropdown"
                 color="inherit"
+                onClick={handleProfileMenuOpen}
+                aria-controls={menuId}
+              aria-haspopup="true"
               >
                 <AccountCircle />
                 </IconButton> 
-                </NavLink>
+
 
               :
                 <Auth />
               }
 
-
-        
           </div>
         </Toolbar>
       </AppBar>
+
+      <Menu
+       anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={!!anchorEl}
+      id={menuId}
+      onClose={handleMenuClose}
+      className={classes.profileDropdown}
+    >
+      <MenuItem onClick={goToProfile}>Profile</MenuItem>
+      <MenuItem onClick={logout}>Log out</MenuItem>
+    </Menu>
+
     </div>
   );
 }

@@ -5,10 +5,27 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Loader from '../partials/Loader';
+import General from './General';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    padding: "30px",
+    [theme.breakpoints.down('sm')]: {
+      padding: "10px"
+    },
+  },
+  tabPanel: {
+    [theme.breakpoints.down("xs")]: {
+      padding: "10px"
+    }
+  }
+}));
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-  
+    const classes = useStyles();
+
     return (
       <div
         role="tabpanel"
@@ -18,7 +35,7 @@ function TabPanel(props) {
         {...other}
       >
         {value === index && (
-          <Box p={3}>
+          <Box p={3} className={classes.tabPanel}>
             {children}
           </Box>
         )}
@@ -33,15 +50,7 @@ function TabPanel(props) {
     };
   }
   
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      padding: "30px",
-      [theme.breakpoints.down('sm')]: {
-        padding: "10px"
-      },
-    },
-  }));
+
 
 const Profile = () => {
 
@@ -71,13 +80,13 @@ const Profile = () => {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <Loader />
+            <General />
         </TabPanel>
         <TabPanel value={value} index={1}>
           Item Two
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+        <Loader />
         </TabPanel>
         <TabPanel value={value} index={3}>
           Item Four

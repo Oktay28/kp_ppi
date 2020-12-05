@@ -6,7 +6,7 @@ const userType = gql`
         id: ID!
         name: String!
         email: String!
-        born_year: String
+        birth_year: String
         password: String
         address: String
         phone: String
@@ -19,9 +19,11 @@ const userType = gql`
     }
 
     extend type Mutation {
-
         register(name: String!, email: String!, password: String!): Response
+    }
 
+    extend type Mutation {
+        updateMe(id: ID!, name: String, email: String, birth_year: String, password: String, address: String, phone: String, cart_number: String): Boolean
     }
 
 `;
@@ -65,6 +67,15 @@ const userMutation= {
                 error: err.message
             }
         }
+    },
+    updateMe: async(parent, {id, ...rest}, {models}) => {
+        const updated = await models.User.update(rest, {
+            where: {
+                id
+            }
+        })
+
+        return !!updated;
     }
 }
 

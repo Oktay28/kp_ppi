@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true
         },
-        born_year: {
+        birth_year: {
             type: DataTypes.DATE
         },
         password: {

@@ -7,8 +7,11 @@ import {
     MenuItem,
     Select,
     FormControl,
-    Button
+    Button,
+    IconButton,
+    Tooltip
 } from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles(theme => ({
     rightSide: {
@@ -19,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
     inner: {
         padding: "30px",
+        color: theme.palette.primary.dark,
         [theme.breakpoints.down("md")]: {
             padding: "10px"
         }
@@ -29,7 +33,8 @@ const useStyles = makeStyles(theme => ({
         marginBottom: "20px"
     },
     price: {
-
+        fontSize: "24px",
+        marginBottom: "20px"
     },
     formControl: {
         margin: theme.spacing(1),
@@ -37,8 +42,13 @@ const useStyles = makeStyles(theme => ({
         margin: 0
     },
     addToCart: {
-        display: "block",
-        width: "100%"
+        flex: "1"
+    },
+    oldPrice: {
+        textDecoration: "line-through",
+        display: "inline-block",
+        marginLeft: "30px",
+        fontSize: "20px"
     }
 }))
 
@@ -53,15 +63,20 @@ const ProductData = ({product, sizes}) => {
                     <h3 className={classes.title}>
                         {product.name}
                     </h3>
-                    <div>
-                        {product.price}
+                    <div className={classes.price}>
+                        {product.price} lv.
+
+                        <span className={classes.oldPrice}>
+                            {product.old_price} lv.
+                        </span>
                     </div>
-                    <div>
+                    <div className="mb-15">
                         {product.short_text}
                     </div>
-                    <div>
+                    <div className="mb-45">
                         {product.description}
                     </div>
+
                     <div className="mb-30">
                     <FormControl variant="outlined" className={classes.formControl}>
                         <InputLabel id="size">Size</InputLabel>
@@ -78,8 +93,15 @@ const ProductData = ({product, sizes}) => {
                         </Select>
                     </FormControl>
                     </div>
-                    <div>
-                        <Button variant="contained" color="primary" size="large" className={classes.addToCart}>
+                    <div className="d-flex">
+
+                        <Tooltip title="Add to favourites">
+                            <IconButton>
+                                <FavoriteIcon />
+                            </IconButton>
+                        </Tooltip>
+
+                        <Button variant="contained" color="primary" size="large" className={classes.addToCart} disabled={!size}>
                             Add to cart
                         </Button>
                     </div>

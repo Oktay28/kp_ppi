@@ -102,7 +102,7 @@ const Cart = () => {
       push(removeModal);
     };
 
-    const products = [1];
+    const products = [];
 
     return (
         <div>

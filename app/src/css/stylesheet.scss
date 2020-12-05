@@ -235,5 +235,9 @@ $huge-font-size: 40px;
 }
 
 .font-weight-bold {
-    font-weight: bold;
+    font-weight: bold !important;
 } 
+
+body {
+    padding: 0 !important;
+}

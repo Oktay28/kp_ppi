@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
         height: "700px",
         width: "100%",
         objectFit: "cover",
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
             height: "400px"
         },
     },
