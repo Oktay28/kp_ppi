@@ -9,7 +9,8 @@ const useUrlParams = () => {
     query.delete("modal");
 
     function addModal(modal) {
-        return `${pathname}${search}${search ? `&` : `?`}modal=${modal}`;
+        query.set("modal", modal);
+        return `${pathname}?${query.toString()}`;
     }
 
     return [

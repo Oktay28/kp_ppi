@@ -25,6 +25,7 @@ const Product = () => {
     }
 
     const product = data.product || {};
+    const sizes = data.sizes || [];
 
     return (
         <div>
@@ -34,7 +35,7 @@ const Product = () => {
                 </Grid>
 
                 <Grid item xs={12} md={5}>
-                    <ProductData product={product} />
+                    <ProductData product={product} sizes={sizes} />
                 </Grid>
 
             </Grid>

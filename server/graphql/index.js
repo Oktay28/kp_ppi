@@ -1,6 +1,7 @@
 const {gql} = require("apollo-server-express");
 const {productType, productQuery} = require("./products");
 const {userType, userQuery, userMutation} = require("./users");
+const {sizeType, sizeQuery} = require("./size");
 
 const schema = gql`
 
@@ -17,9 +18,9 @@ const schema = gql`
     }
 
 `
-const typeDefs = [schema, productType, userType];
+const typeDefs = [schema, productType, userType, sizeType];
 const resolvers = {
-    Query: {...productQuery, ...userQuery},
+    Query: {...productQuery, ...userQuery, ...sizeQuery},
     Mutation: {
         ...userMutation
     }

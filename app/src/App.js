@@ -4,7 +4,7 @@ import Sidebar from './components/partials/Sidebar';
 import SidebarToggler from './components/partials/SidebarToggler';
 import GoTop from './components/partials/GoTop';
 import HeaderObserver from './components/partials/HeaderObserver';
-import {Switch, Route, useLocation, useHistory} from 'react-router-dom';
+import {Switch, Route, useLocation, useHistory, Redirect} from 'react-router-dom';
 import GlobalContext from './components/context/GlobalContext';
 import { ToastContainer } from 'react-toastify';
 
@@ -80,6 +80,8 @@ function App() {
             <Route path="/profile">
               <Profile />
             </Route>
+
+            <Redirect to="/" />
 
           </Switch>
         </div>

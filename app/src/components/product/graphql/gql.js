@@ -11,6 +11,10 @@ const PRODUCT = gql`
             image
             old_price
         }
+        sizes {
+            id
+            name
+        }
     }
 `;
 
