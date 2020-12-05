@@ -20,6 +20,7 @@ import Footer from './components/partials/Footer';
 import Contacts from './components/contacts/Contacts';
 import Profile from './components/profile/Profile';
 import Product from './components/product/Product';
+import Cart from './components/Cart/Cart';
 
 const useClasses = makeStyles(theme => ({
   root: {
@@ -79,6 +80,10 @@ function App() {
 
             <Route path="/profile">
               <Profile />
+            </Route>
+
+            <Route path="/cart">
+              <Cart />
             </Route>
 
             <Redirect to="/" />

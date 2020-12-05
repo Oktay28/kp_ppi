@@ -102,7 +102,7 @@ const Cart = () => {
       push(removeModal);
     };
 
-    const products = [];
+    const products = [1];
 
     return (
         <div>
@@ -172,7 +172,7 @@ const Cart = () => {
               Total cost: <span className="font-weight-bold">123.45 lv</span>
             </div>
 
-            <Link to="a" className="no-decoration">
+            <Link to="/cart" className="no-decoration">
             <Button
               variant="contained"
               color="primary"
