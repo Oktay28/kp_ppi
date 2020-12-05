@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import useUrlParams from '../../../hooks/useUrlParams';
-import {useLocation, Link, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {
   makeStyles
 } from '@material-ui/core';
@@ -19,21 +19,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Search = () => {
-    const params = useUrlParams();
-    const {pathname} = useLocation();
+    const [modal, addModal, removeModal] = useUrlParams();
     const {push} = useHistory();
-    const modal = params.get("modal");
     const classes = useStyles();
   
     const handleClose = () => {
-      push(pathname);
+      push(removeModal);
     };
 
     const isSearch = (modal == "search");
-  
+
     return (
       <div>
-          <Link to={isSearch ? pathname : `${pathname}?modal=search`} className={`header-link ${isSearch ? "active-header-link" : ""}`}>
+          <Link to={isSearch ? removeModal : addModal("search")} className={`header-link ${isSearch ? "active-header-link" : ""}`}>
             <IconButton color="inherit">
                 <SearchIcon />
             </IconButton>

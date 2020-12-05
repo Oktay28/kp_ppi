@@ -37,9 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles();
-  const params = useUrlParams();
-  const {pathname} = useLocation();
-  const modal = params.get("modal");
+  const [modal, addModal, removeModal] = useUrlParams();
   const {user} = useContext(GlobalContext);
 
   const isMenu = (modal == "menu");
@@ -48,7 +46,7 @@ function Header() {
     <div className={classes.grow}>
       <AppBar position="fixed" style={{zIndex: "15000"}}>
         <Toolbar>
-        <Link to={isMenu ? pathname : `${pathname}?modal=menu`} className={`header-link ${isMenu ? "active-header-link" : ""}`}>
+        <Link to={isMenu ? removeModal : addModal("menu")} className={`header-link ${isMenu ? "active-header-link" : ""}`}>
             <IconButton color="inherit">
               <MenuIcon />
             </IconButton>

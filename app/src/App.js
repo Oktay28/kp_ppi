@@ -38,8 +38,7 @@ const useClasses = makeStyles(theme => ({
 function App() {
 
   const classes = useClasses();
-  const params = useUrlParams();
-  const modal = params.get("modal");
+  const [modal] = useUrlParams();
   const isMenu = (modal == "menu");
   const {pathname} = useLocation();
   const {logged} = useContext(GlobalContext);

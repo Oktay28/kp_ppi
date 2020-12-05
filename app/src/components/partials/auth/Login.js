@@ -2,12 +2,13 @@ import React, {useContext, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useLoginLazyQuery } from './graphql';
 import Alert from '@material-ui/lab/Alert';
 import {toast} from 'react-toastify';
 import GlobalContext from '../../context/GlobalContext';
+import useUrlParams from '../../../hooks/useUrlParams';
 
 const useStyles = makeStyles(theme => ({
     title: {
@@ -27,9 +28,9 @@ const useStyles = makeStyles(theme => ({
 const Login = () => {
 
     const classes = useStyles();
-    const { pathname } = useLocation();
     const [login, {data, loading, error}] = useLoginLazyQuery();
     const {logUser} = useContext(GlobalContext);
+    const [, addModal] = useUrlParams();
 
     useEffect(() => {
         if(data && data.login) {
@@ -93,7 +94,7 @@ const Login = () => {
                             </Button>
                         </div>
 
-                        <Link to={`${pathname}?modal=forgot-password`} className={classes.forgotPassword}>
+                        <Link to={addModal("forgot-password")} className={classes.forgotPassword}>
                             Forgot Password?
             </Link>
                     </form>

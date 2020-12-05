@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import useUrlParams from '../../../hooks/useUrlParams';
-import {useLocation, Link, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -35,20 +35,18 @@ const useStyles = makeStyles((theme) => ({
 const Cart = () => {
 
     const classes = useStyles();
-    const params = useUrlParams();
-    const {pathname} = useLocation();
+    const [modal, addModal, removeModal] = useUrlParams();
     const {push} = useHistory();
-    const modal = params.get("modal");
 
     const isCart = (modal == "cart");
 
     const handleClose = () => {
-      push(pathname);
+      push(removeModal);
     };
 
     return (
         <div>
-           <Link to={isCart ? pathname : `${pathname}?modal=cart`} className={`header-link ${isCart ? "active-header-link" : ""}`}>
+           <Link to={isCart ? removeModal : addModal("cart")} className={`header-link ${isCart ? "active-header-link" : ""}`}>
                 <IconButton color="inherit">
                   <ShoppingCartIcon />
                 </IconButton>

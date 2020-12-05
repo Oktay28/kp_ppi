@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom';
 import {
     Grid
 } from '@material-ui/core';
+import ProductData from './ProductData';
 
 const Product = () => {
 
@@ -27,7 +28,16 @@ const Product = () => {
 
     return (
         <div>
-            <ProductSlider />
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={7}>
+                    <ProductSlider />
+                </Grid>
+
+                <Grid item xs={12} md={5}>
+                    <ProductData product={product} />
+                </Grid>
+
+            </Grid>
         </div>
     );
 }

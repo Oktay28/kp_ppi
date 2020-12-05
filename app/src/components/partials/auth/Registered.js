@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
-import {useLocation} from 'react-router-dom';
+import useUrlParams from '../../../hooks/useUrlParams';
 
 const useStyles = makeStyles(theme => ({
     title: {
@@ -25,14 +23,14 @@ const useStyles = makeStyles(theme => ({
 const Registered = () => {
 
     const classes = useStyles();
-    const {pathname} = useLocation();
+    const [, addModal] = useUrlParams();
 
     return (
         <div>
             <h3 className={classes.title}>
                 You have been successfully registered!
             </h3>
-            <Link to={`${pathname}?modal=login`} className={classes.gotoLogin}>
+            <Link to={addModal("login")} className={classes.gotoLogin}>
                 Login
             </Link>
       </div>

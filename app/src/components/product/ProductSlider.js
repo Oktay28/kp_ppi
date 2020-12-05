@@ -7,22 +7,14 @@ import {
 
 const useStyles = makeStyles(theme => ({
     slideImg: {
-        height: "600px",
+        height: "700px",
         width: "100%",
-        objectFit: "cover"
+        objectFit: "cover",
+        [theme.breakpoints.down('md')]: {
+            height: "400px"
+        },
     },
-    slideLegend: {
-        position: "absolute",
-        fontSize: "30px",
-        color: theme.palette.primary.contrastText,
-        fontWeight: "bold",
-        left: "50%",
-        bottom: "20%",
-        transform: "translateX(-50%)",
-        padding: "30px",
-        borderRadius: "8px",
-        backgroundColor: "rgba(0, 0, 0, .5)"
-    }
+
 }))
 
 const responsive = {
@@ -50,15 +42,12 @@ const ProductSlider = () => {
         <Carousel responsive={responsive} infinite >
             <div>
                 <img className={classes.slideImg} alt="slider" src="https://scx2.b-cdn.net/gfx/news/hires/2017/goes16satell.jpg" />
-                <p className={classes.slideLegend}>Legend 1</p>
             </div>
             <div>
                 <img className={classes.slideImg} alt="slider" src="https://photojournal.jpl.nasa.gov/jpeg/PIA23689.jpg" />
-                <p className={classes.slideLegend}>Legend 2</p>
             </div>
             <div>
                 <img className={classes.slideImg} alt="slider" src="https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528_960_720.jpg" />
-                <p className={classes.slideLegend}>Legend 3</p>
             </div>
         </Carousel>
     );

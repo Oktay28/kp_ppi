@@ -2,7 +2,8 @@ import React, {memo} from 'react';
 import {
     makeStyles
 } from '@material-ui/core';
-import {useLocation, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import useUrlParams from '../../hooks/useUrlParams';
 
 const useClasses = makeStyles({
     sidebarToggle: {
@@ -21,10 +22,10 @@ const useClasses = makeStyles({
 
 const SidebarToggler = () => {
     const classes = useClasses();
-    const {pathname} = useLocation();
+    const [, , removeModal] = useUrlParams();
 
     return (
-        <Link to={pathname} id="sidebar-toggler" className={classes.sidebarToggle}>
+        <Link to={removeModal} id="sidebar-toggler" className={classes.sidebarToggle}>
             
         </Link>
     );

@@ -22,7 +22,7 @@ const PRODUCTS = gql`
             products {
                 id
                 name
-                short_description
+                short_text
             }
             count
         }

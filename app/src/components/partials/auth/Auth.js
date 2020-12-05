@@ -13,7 +13,7 @@ import Registered from './Registered';
 import ForgotPassword from './ForgotPassword';
 import Img from '../../partials/Img';
 import useUrlParams from '../../../hooks/useUrlParams';
-import {useLocation, Link, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import GlobalContext from '../../context/GlobalContext';
 
 const useStyles = makeStyles(theme => ({
@@ -70,10 +70,8 @@ const useStyles = makeStyles(theme => ({
 const Auth = () => {
 
     const classes = useStyles();
-    const params = useUrlParams();
-    const {pathname} = useLocation();
+    const [modal, addModal, removeModal] = useUrlParams();
     const {push} = useHistory();
-    const modal = params.get("modal");
     const {registered} = useContext(GlobalContext);
 
     let page = null;
@@ -101,12 +99,12 @@ const Auth = () => {
     }
   
     const handleClose = () => {
-      push(pathname);
+      push(removeModal);
     };
 
     return (
         <div>
-             <Link to={isAuth ? pathname : `${pathname}?modal=login`} className={`header-link ${isAuth ? "active-header-link" : ""}`}>
+             <Link to={isAuth ? removeModal : addModal("login")} className={`header-link ${isAuth ? "active-header-link" : ""}`}>
                 <IconButton color="inherit">
                     <ExitToAppIcon />
                 </IconButton>
@@ -121,10 +119,10 @@ const Auth = () => {
                     <Img src="/public/images/logo.png" className={classes.authLogo} />
                     </div>
                     <div className={classes.links}>
-                        <Link to={`${pathname}?modal=login`} className={`${classes.leftTitle} ${modal == "login" ? classes.active : ""}`}>
+                        <Link to={addModal("login")} className={`${classes.leftTitle} ${modal == "login" ? classes.active : ""}`}>
                             Login
                         </Link>
-                        <Link to={`${pathname}?modal=register`} className={`${classes.leftTitle} ${modal == "register" ? classes.active : ""}`}>
+                        <Link to={addModal("register")} className={`${classes.leftTitle} ${modal == "register" ? classes.active : ""}`}>
                             Register
                         </Link>
                     </div>

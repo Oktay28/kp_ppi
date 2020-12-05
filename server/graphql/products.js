@@ -5,8 +5,11 @@ const productType = gql`
     type Product {
         id: ID!
         name: String
-        short_description: String
+        short_text: String
         price: String
+        description: String
+        image: String
+        old_price: String
     }
 
     type Products {

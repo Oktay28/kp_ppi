@@ -53,10 +53,9 @@ const useStyles = makeStyles(theme => ({
 const Filter = () => {
 
     const classes = useStyles();
-    const params = useUrlParams();
+    const [modal, addModal, removeModal, params] = useUrlParams();
     const {pathname} = useLocation();
     const {push} = useHistory();
-    const modal = params.get("modal");
 
     const defaultForm = {
       name: params.get("name") || "",
@@ -69,7 +68,7 @@ const Filter = () => {
     const [form, setForm] = useState(defaultForm);
 
     const handleClose = () => {
-      push(pathname);
+      push(removeModal);
     };
 
     function changeHandler(event) {
@@ -98,7 +97,7 @@ const Filter = () => {
 
     function submitHandler(event) {
       event.preventDefault();
-      push(`${pathname}?${new URLSearchParams(form).toString()}`)
+      push(`${pathname}?${new URLSearchParams(form).toString()}`);
     }
 
     function reset() {
@@ -110,7 +109,7 @@ const Filter = () => {
     return (
         <div>
             <div className={classes.filter}>
-                <Link className={classes.button} role="button" to={isFilter ? pathname : `${pathname}?modal=filter`}>
+                <Link className={classes.button} role="button" to={isFilter ? removeModal : addModal("filter")}>
                     <FilterListRoundedIcon /> Filter
                 </Link>
             </div>
