@@ -11,6 +11,8 @@ const productType = gql`
         image: String
         old_price: String
         Favourites: Favourite
+        category_id: ID
+        is_featured: Int
     }
 
     type Products {
@@ -26,6 +28,7 @@ const productType = gql`
         min: Int
         max: Int
         page: Int
+        limit: Int
     }
 
     extend type Query {
@@ -64,7 +67,7 @@ const productQuery = {
     },
     products: async(parent, {filter}, {models}) => {
         const where = {};
-
+        console.log(filter)
         if(filter.name) {
             where.name = models.Sequelize.where(
                 models.Sequelize.fn('lower', models.Sequelize.col('Products.name')),
@@ -73,6 +76,8 @@ const productQuery = {
                 }
             )
         }
+
+
 
         if(filter.category_id) {
             where.category_id = filter.category_id;
@@ -93,7 +98,7 @@ const productQuery = {
         where.price = {
             [models.Sequelize.Op.between]: [filter.min || 0, filter.max || 10000]
         }
-        console.log(where)
+
         const products = await models.Products.findAll({
             where,
             raw: true,
@@ -105,7 +110,7 @@ const productQuery = {
                     required: false
                 }
             ],
-            offset: ((filter.page || 1) - 1) * 30
+            offset: ((filter.page || 1) - 1) * (filter.limit || 30)
         })
 
         const count = await models.Products.count({

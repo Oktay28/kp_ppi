@@ -30,6 +30,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+let isSubmit = false;
+
 const General = () => {
     const classes = useStyles();
     const { user } = useContext(GlobalContext);
@@ -71,12 +73,15 @@ const General = () => {
                 return errors;
             }}
             onReset={resetForm => {
-
+                isSubmit = false
                 setEdit(false);
             }}
             onSubmit={(values) => {
-                console.log(11)
-
+                if(isSubmit) {
+                    console.log(11)
+                } else {
+                    isSubmit = true;
+                }
             }}
         >
             {({

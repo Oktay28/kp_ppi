@@ -13,8 +13,27 @@ const useStyles = makeStyles(theme => ({
         padding: "30px 10px 20px",
         cursor: "pointer",
         transition: "all .3s",
+        position: "relative",
         "&:hover": {
             marginTop: "-10px"
+        },
+        "&.special": {
+            boxShadow: "0 0 13px rgba(0, 0, 0, .6)"
+        },
+        "&.special::after": {
+            content: '"\\2605"',
+            color: "#ffffff",
+            position: "absolute",
+            right: "-10px",
+            fontSize: "24px",
+            top: "-10px",
+            borderRadius: "50%",
+            width: "40px",
+            height: "40px",
+            backgroundColor: theme.palette.primary.dark,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
         }
     },
     productTitle: {
@@ -60,7 +79,7 @@ const ProductItem = ({product = {}}) => {
     return (
         <Grid item xs={12} sm={6} md={3} lg={2}>
             <Link to={`/products/${product.id}`} className={classes.productLink}>
-            <div className={classes.productItem}>
+            <div className={`${classes.productItem} ${product.is_featured ? "special" : ""}`}>
                 <h4 className={classes.productTitle}>
                     {product.name}
                 </h4>

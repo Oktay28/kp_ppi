@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
   const [modal, addModal, removeModal] = useUrlParams();
-  const {user} = useContext(GlobalContext);
+  const {user, logout} = useContext(GlobalContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const {push} = useHistory();
 
@@ -62,13 +62,14 @@ function Header() {
     setAnchorEl(event.currentTarget);
   };
 
-  const logout = () => {
-
-  }
-
   const goToProfile = () => {
     push("/profile");
     handleMenuClose();
+  }
+
+  const logoutUser = () => {
+    setAnchorEl(null);
+    logout();
   }
 
   const menuId = "profile-dropdown";
@@ -123,7 +124,7 @@ function Header() {
       className={classes.profileDropdown}
     >
       <MenuItem onClick={goToProfile}>Profile</MenuItem>
-      <MenuItem onClick={logout}>Log out</MenuItem>
+      <MenuItem onClick={logoutUser}>Log out</MenuItem>
     </Menu>
 
     </div>

@@ -50,7 +50,7 @@ const Sidebar = () => {
                         <SidebarLink to="/" exact>Home</SidebarLink>
                     </li>
                     <li>
-                        <SidebarLink to="/products">Shop</SidebarLink>
+                        <SidebarLink to="/products">Products</SidebarLink>
                     </li>
                     <li>
                         <SidebarLink to="/contacts">Contacts</SidebarLink>

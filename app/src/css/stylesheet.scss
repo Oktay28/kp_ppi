@@ -223,6 +223,7 @@ $huge-font-size: 40px;
 #cart-dialog {
     .MuiPaper-root {
         max-height: 100% !important;
+        margin: 0 !important
     }
 }
 
@@ -248,4 +249,13 @@ body {
 
 .position-relative {
     position: relative !important;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.MuiDialog-paper {
+    max-height: calc(100% - 150px) !important;
+    margin: 100px 32px 32px !important;
 }

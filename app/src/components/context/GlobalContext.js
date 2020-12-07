@@ -1,6 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react';
 import {useMeLazyQuery} from './graphql';
-import {useHistory, useLocation} from 'react-router-dom';
 import {toast} from 'react-toastify';
 
 const GlobalContext = createContext();
@@ -11,6 +10,7 @@ const GlobalProvider = ({children}) => {
     const id = window.localStorage.getItem("id");
     const [fetchUser, {data}] = useMeLazyQuery();
     const [logged, setLogged] = useState(false);
+    const [user, setUser] = useState(null);
     const [cart, setCart] = useState(() => {
         const localCart = localStorage.getItem("cart");
         return localCart ? JSON.parse(localCart) : [];
@@ -28,6 +28,14 @@ const GlobalProvider = ({children}) => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart])
 
+    useEffect(() => {
+        if(data) {
+            setUser(data.me);
+        } else {
+            setUser(null);
+        }
+    }, [data]);
+
     if(!logged && id && !data) {
         return "loading...";
     }
@@ -36,8 +44,6 @@ const GlobalProvider = ({children}) => {
         setLogged(true)
         fetchUser(data);
     }
-
-    const user = data && data.me;
 
     const addToCart = (id, size) => {
         setCart(prevCart => {
@@ -65,6 +71,14 @@ const GlobalProvider = ({children}) => {
         setCart(prevCart => prevCart.map(item => ((item.id == id) && (item.size == size)) ? {...item, count: item.count + value} : item))
     }
 
+    const logout = () => {
+        window.localStorage.removeItem("id");
+        setLogged(false);
+        setRegistered(false);
+        setUser(null);
+        toast.info("Logged out!");
+    }
+
     return (
         <GlobalContext.Provider value={{
             registered,
@@ -75,7 +89,8 @@ const GlobalProvider = ({children}) => {
             addToCart,
             cart,
             removeFromCart,
-            changeCount
+            changeCount,
+            logout
         }}>
             {children}
         </GlobalContext.Provider>

@@ -58,14 +58,22 @@ const Filter = () => {
     const [fetchCategories, {data, loading}] = useCategoriesLazyQuery();
 
     const defaultForm = {
-      name: params.get("name") || "",
-      new: params.get("new") || "",
-      featured: params.get("featured") || "",
-      min: +params.get("min") || 0,
-      max: +params.get("max") || 10000
+      name: "",
+      new: "",
+      featured: 0,
+      min: 0,
+      max: 10000,
+      category: 0
     };
 
-    const [form, setForm] = useState(defaultForm);
+    const [form, setForm] = useState({
+      name: params.get("name") || "",
+      new: params.get("new") || "",
+      featured: +params.get("featured") || 0,
+      min: +params.get("min") || 0,
+      max: +params.get("max") || 10000,
+      category: params.get("category")
+    });
 
     const isFilter = (modal == "filter");
 
@@ -91,7 +99,7 @@ const Filter = () => {
       const {name, checked} = event.target;
       setForm(prevForm => ({
         ...prevForm,
-        [name]: checked
+        [name]: +checked
       }))
     }
 
@@ -109,12 +117,15 @@ const Filter = () => {
     }
 
     function reset() {
+      console.log(defaultForm)
       setForm(defaultForm)
     }
 
     if(loading) {
       return "loading..."
     }
+
+    const categories = data?.categories || [];
 
     return (
         <div>
@@ -141,25 +152,28 @@ const Filter = () => {
         <div className="mb-30">
         <FormControl component="fieldset" fullWidth>
             <FormLabel component="legend">New products</FormLabel>
-            <FormControlLabel value="1" control={<Checkbox name="new" onChange={changeCheckbox} value="1" checked={!!form.new}/>} label="Show only new products" />
+            <FormControlLabel control={<Checkbox name="new" onChange={changeCheckbox} value="1" checked={!!form.new}/>} label="Show only new products" />
           </FormControl>
         </div>
 
         <div className="mb-30">
           <FormControl component="fieldset" fullWidth>
               <FormLabel component="legend">Featured products</FormLabel>
-              <FormControlLabel value="1" control={<Checkbox name="featured" onChange={changeCheckbox} value="1" checked={!!form.featured}/>} label="Show only featured products" />
+              <FormControlLabel control={<Checkbox name="featured" onChange={changeCheckbox} value="1" checked={!!form.featured}/>} label="Show only featured products" />
             </FormControl>
         </div>
 
         <div className="mb-30">
           <FormControl component="fieldset" fullWidth>
             <FormLabel component="legend">Category</FormLabel>
-            <RadioGroup aria-label="gender" name="gender" value={form.gender || ""} onChange={changeHandler}>
-              <FormControlLabel value="female" control={<Radio />} label="Female" />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-              <FormControlLabel value="other" control={<Radio />} label="Other" />
-              <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
+            <RadioGroup aria-label="category" name="category" value={form.category || ""} onChange={changeHandler}>
+              <FormControlLabel value="0" control={<Radio />} label="All" />
+              {
+                categories.map(category => (
+                    <FormControlLabel value={category.id} key={category.id} className="text-capitalize" control={<Radio />} label={category.name} />
+                ))
+              }
+              
             </RadioGroup>
           </FormControl>
         </div>

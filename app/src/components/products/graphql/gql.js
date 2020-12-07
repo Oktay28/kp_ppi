@@ -3,7 +3,7 @@ import {gql} from '@apollo/client';
 const PRODUCTS = gql`
     query productsQuery(
         $name: String,
-        $category_id: ID,
+        $category: ID,
         $featured: Int,
         $new: Int,
         $min: Int,
@@ -12,7 +12,7 @@ const PRODUCTS = gql`
     ) {
         products(filter: {
             name: $name,
-            category_id: $category_id,
+            category_id: $category,
             is_featured: $featured,
             is_new: $new,
             min: $min,
@@ -25,6 +25,7 @@ const PRODUCTS = gql`
                 price
                 old_price
                 short_text
+                is_featured
             }
             count
         }

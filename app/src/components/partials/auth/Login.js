@@ -35,7 +35,7 @@ const Login = () => {
     useEffect(() => {
         if(data && data.login) {
             window.localStorage.setItem("id", data.login.id);
-            toast.success("Logged in!")
+            toast.info("Logged in!")
             logUser({
                 variables: {id: data.login.id}
             })

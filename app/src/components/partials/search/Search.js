@@ -11,6 +11,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {
   makeStyles
 } from '@material-ui/core';
+import {useSearchLazyQuery} from './graphql';
 
 const useStyles = makeStyles(theme => ({
   searchDialog: {
@@ -65,25 +66,46 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+let searchTimer;
+
 const Search = () => {
     const [modal, addModal, removeModal] = useUrlParams();
     const {push} = useHistory();
     const classes = useStyles();
     const [name, setName] = useState("");
+    const [search, {data, loading}] = useSearchLazyQuery();
+
+    const isSearch = (modal == "search");
 
     useEffect(() => {
-      if(name) {
-
+      if(name && isSearch) {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          search({
+            variables: {
+              name
+            }
+          })
+        }, [500])
       }
-    }, [name])
+      if(!isSearch) {
+        setName("");
+        clearTimeout(searchTimer);
+      }
+
+      return () => {
+        clearTimeout(searchTimer);
+      }
+    }, [name, isSearch])
   
     const handleClose = () => {
       push(removeModal);
     };
 
-    const isSearch = (modal == "search");
 
-    const products = [1, 2, 3];
+    const products = data?.products?.products || [];
+    const count = data?.products?.count || 0;
+
 
     return (
       <div>
@@ -97,33 +119,41 @@ const Search = () => {
           <DialogTitle className={classes.title}><SearchIcon /> Search</DialogTitle>
           <DialogContent>
             <TextField onChange={event => setName(event.target.value)} value={name} name="name" label="Search by name" type="text" variant="outlined" fullWidth className="mb-30" />
+
             {
+              loading ? "loading..." : 
               name && (products.length ? 
 
-              <>
-              <h2 className={classes.totalFound}>Total 42 items found</h2>
-                {
-                  products.map(product => (
-                    <Link to="/" className="no-decoration" key={product} >
-                      <div className={classes.searchRow}>
-                      <img src="https://s23527.pcdn.co/wp-content/uploads/2020/01/100k-moon.jpg.optimal.jpg" className={classes.searchImg} />
-                      <span className={classes.searchName}>
-                        Product name here
-                      </span>
-                    </div>
+                <>
+                <h2 className={classes.totalFound}>Total {count} items found</h2>
+                  {
+                    products.map(product => (
+                      <Link to={`/products/${product.id}`} className="no-decoration" key={product.id} >
+                        <div className={classes.searchRow}>
+                        <img src="https://s23527.pcdn.co/wp-content/uploads/2020/01/100k-moon.jpg.optimal.jpg" className={classes.searchImg} />
+                        <span className={classes.searchName}>
+                          {product.name}
+                        </span>
+                      </div>
+                      </Link>
+                    ))
+                  }
+                  {
+                    !!count && (
+                    <Link to={`/products?name=${name}`}  className="no-decoration">
+                      <Button className={classes.loadMore} size="large" variant="contained" color="primary">
+                        View All
+                      </Button>
                     </Link>
-                  ))
-                }
-                <Link to="/" className="no-decoration">
-                  <Button className={classes.loadMore} size="large" variant="contained" color="primary">
-                    Load more
-                  </Button>
-                </Link>
-              </> :
-              <h2 className={classes.nothingFound}>
-                  No items found
-              </h2>)
+                    )
+                  }
+
+                </> :
+                <h2 className={classes.nothingFound}>
+                    No items found
+                </h2>)
             }
+
 
           </DialogContent>
         </Dialog>

@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => createStyles({
         },
         ".color-dark": {
             color: theme.palette.primary.dark
+        },
+        ".Toastify__toast--info": {
+            backgroundColor: `${theme.palette.primary.dark} !important`
         }
     }
 }))
