@@ -21,6 +21,13 @@ const PRODUCT = gql`
     }
 `;
 
+const ADD_FAVOURITE = gql`
+    mutation addToFavourites($user_id: ID!, $product_id: ID!) {
+        addToFavourite(user_id: $user_id, product_id: $product_id)
+    }
+`;
+
 export {
-    PRODUCT
+    PRODUCT,
+    ADD_FAVOURITE
 }

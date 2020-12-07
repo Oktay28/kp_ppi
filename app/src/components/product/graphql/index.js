@@ -1,5 +1,5 @@
-import {useLazyQuery} from '@apollo/client';
-import {PRODUCT} from './gql';
+import {useLazyQuery, useMutation} from '@apollo/client';
+import {PRODUCT, ADD_FAVOURITE} from './gql';
 
 const useProductLazyQuery = () => {
     const query = useLazyQuery(PRODUCT, {
@@ -9,6 +9,15 @@ const useProductLazyQuery = () => {
     return query;
 }
 
+const useAddFavouriteMutation = () => {
+    const mutation = useMutation(ADD_FAVOURITE, {
+        errorPolicy: "all"
+    })
+
+    return mutation;
+}
+
 export {
-    useProductLazyQuery
+    useProductLazyQuery,
+    useAddFavouriteMutation
 }

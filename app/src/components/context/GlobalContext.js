@@ -17,6 +17,7 @@ const GlobalProvider = ({children}) => {
     });
 
     useEffect(() => {
+        console.log(id)
         if(id) {
             fetchUser({
                 variables: {id}

@@ -18,10 +18,10 @@ const Product = () => {
         fetchProduct({
             variables: {
                 id: productId,
-                userId: user ? user.id : null
+                userId: user?.id
             }
         })
-    }, []);
+    }, [user]);
 
     if(!data) {
         return "loading...";

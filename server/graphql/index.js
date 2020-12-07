@@ -2,7 +2,7 @@ const {gql} = require("apollo-server-express");
 const {productType, productQuery} = require("./products");
 const {userType, userQuery, userMutation} = require("./users");
 const {sizeType, sizeQuery} = require("./size");
-const {favouriteType} = require("./favourites");
+const {favouriteType, favouriteQuery, favouriteMutation} = require("./favourites");
 const {categoryQuery, categoryType} = require("./categories");
 
 const schema = gql`
@@ -22,9 +22,9 @@ const schema = gql`
 `
 const typeDefs = [schema, productType, userType, sizeType, favouriteType, categoryType];
 const resolvers = {
-    Query: {...productQuery, ...userQuery, ...sizeQuery, ...categoryQuery},
+    Query: {...productQuery, ...userQuery, ...sizeQuery, ...categoryQuery, ...favouriteQuery},
     Mutation: {
-        ...userMutation
+        ...userMutation, ...favouriteMutation
     }
 }
 

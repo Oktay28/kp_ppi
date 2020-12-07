@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Card,
     makeStyles,
@@ -12,6 +12,8 @@ import {
     Tooltip
 } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import {useAddFavouriteMutation} from './graphql';
+import {toast} from 'react-toastify';
 
 const useStyles = makeStyles(theme => ({
     rightSide: {
@@ -55,9 +57,25 @@ const useStyles = makeStyles(theme => ({
 const ProductData = ({product = {}, sizes, user, addToCart}) => {
     const classes = useStyles();
     const [size, setSize] = useState("");
+    const [addFavourite, {data, loading}] = useAddFavouriteMutation();
+
+    useEffect(() => {
+       if(data) {
+        toast.info("Added to Favourites");
+       }
+    }, [data]);
 
     const appendToCart = () => {
         addToCart(product.id, size)
+    }
+
+    const makeFavourite = () => {
+        addFavourite({
+            variables: {
+                user_id: user?.id,
+                product_id: product.id
+            }
+        })
     }
 
     return (
@@ -98,13 +116,15 @@ const ProductData = ({product = {}, sizes, user, addToCart}) => {
                     </FormControl>
                     </div>
                     <div className="d-flex">
-                        {(user && !product.Favourites) && (
-                            <Tooltip title="Add to favourites">
-                                <IconButton>
-                                    <FavoriteIcon />
-                                </IconButton>
-                            </Tooltip>
-                        )}
+                        {
+                            !data && (user && !product.Favourites?.id) && (
+                                <Tooltip title="Add to favourites">
+                                    <IconButton className={loading ? "loading" : ""} onClick={makeFavourite}>
+                                        <FavoriteIcon />
+                                    </IconButton>
+                                </Tooltip>
+                            )
+                        }
 
                         <Button onClick={appendToCart} variant="contained" color="primary" size="large" className={classes.addToCart} disabled={!size}>
                             Add to cart
