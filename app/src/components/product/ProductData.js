@@ -52,9 +52,13 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const ProductData = ({product, sizes}) => {
+const ProductData = ({product = {}, sizes, user, addToCart}) => {
     const classes = useStyles();
     const [size, setSize] = useState("");
+
+    const appendToCart = () => {
+        addToCart(product.id, size)
+    }
 
     return (
         <div className={classes.rightSide}>
@@ -87,21 +91,22 @@ const ProductData = ({product, sizes}) => {
                         label="Size"
                         >
                             {
-                                sizes.map(size => <MenuItem value={size.id} key={size.id}>{size.name}</MenuItem>)
+                                sizes.map(size => <MenuItem value={size.name} key={size.id}>{size.name}</MenuItem>)
                             }
                         
                         </Select>
                     </FormControl>
                     </div>
                     <div className="d-flex">
+                        {(user && !product.Favourites) && (
+                            <Tooltip title="Add to favourites">
+                                <IconButton>
+                                    <FavoriteIcon />
+                                </IconButton>
+                            </Tooltip>
+                        )}
 
-                        <Tooltip title="Add to favourites">
-                            <IconButton>
-                                <FavoriteIcon />
-                            </IconButton>
-                        </Tooltip>
-
-                        <Button variant="contained" color="primary" size="large" className={classes.addToCart} disabled={!size}>
+                        <Button onClick={appendToCart} variant="contained" color="primary" size="large" className={classes.addToCart} disabled={!size}>
                             Add to cart
                         </Button>
                     </div>

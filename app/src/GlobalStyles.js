@@ -11,6 +11,12 @@ const useStyles = makeStyles(theme => createStyles({
         },
         ".header-link": {
             color: theme.palette.primary.contrastText
+        },
+        ".color-text": {
+            color: theme.palette.primary.contrastText
+        },
+        ".color-dark": {
+            color: theme.palette.primary.dark
         }
     }
 }))

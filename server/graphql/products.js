@@ -10,6 +10,7 @@ const productType = gql`
         description: String
         image: String
         old_price: String
+        Favourites: Favourite
     }
 
     type Products {
@@ -22,26 +23,43 @@ const productType = gql`
         category_id: ID
         is_featured: Int
         is_new: Int
-        min: Float
-        max: Float
+        min: Int
+        max: Int
         page: Int
     }
 
     extend type Query {
         products(filter: ProductsFilter): Products
-        product(id: ID!): Product
+        product(id: ID!, userId: ID): Product
+        cartItems(ids: [ID]!): [Product]
     }
 
 `
 
 const productQuery = {
-    product: async(parent, {id}, {models}) => {
+    product: async(parent, {id, userId}, {models}) => {
+        let include = [];
+        if(userId) {
+            include = [
+                {
+                    model: models.Favourites,
+                    required: false,
+                    where: {
+                        product_id: id,
+                        user_id: userId
+                    }
+                }
+            ];
+        }
         const product = await models.Products.findOne({
             where: {
                 id
             },
+            include,
+            nest: true,
             raw: true
         });
+
         return product;
     },
     products: async(parent, {filter}, {models}) => {
@@ -49,7 +67,7 @@ const productQuery = {
 
         if(filter.name) {
             where.name = models.Sequelize.where(
-                models.Sequelize.fn('lower', models.Sequelize.col('name')),
+                models.Sequelize.fn('lower', models.Sequelize.col('Products.name')),
                 {
                   [models.Sequelize.Op.like]: `%${filter.name}%`
                 }
@@ -72,14 +90,10 @@ const productQuery = {
             }
         }
 
-     
-
         where.price = {
             [models.Sequelize.Op.between]: [filter.min || 0, filter.max || 10000]
         }
-
- 
-
+        console.log(where)
         const products = await models.Products.findAll({
             where,
             raw: true,
@@ -102,6 +116,16 @@ const productQuery = {
             products,
             count
         }
+    },
+    cartItems: async(parent, {ids}, {models}) => {
+
+        const products = await models.Products.findAll({
+            where: {
+                id: ids
+            }
+        })
+
+        return products;
     }
 }
 

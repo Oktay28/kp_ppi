@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
 
 server.applyMiddleware({app})
 
+
 app.listen(PORT, () => {
     console.log("server listening...");
 })

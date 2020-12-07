@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 
 import Home from './components/home/Home';
 import Products from './components/products/Products';
+import Order from './components/order/Order';
 
 import useUrlParams from './hooks/useUrlParams';
 
@@ -40,7 +41,7 @@ function App() {
 
   const classes = useClasses();
   const [modal] = useUrlParams();
-  const isMenu = (modal == "menu");
+  const isMenu = (modal === "menu");
   const {pathname} = useLocation();
   const {logged} = useContext(GlobalContext);
   const {push} = useHistory();
@@ -84,6 +85,10 @@ function App() {
 
             <Route path="/cart">
               <Cart />
+            </Route>
+
+            <Route path="/order">
+              <Order />
             </Route>
 
             <Redirect to="/" />

@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {
     makeStyles,
     Button,
-    Grid,
     FormControlLabel,
     Checkbox,
     RadioGroup,
@@ -18,7 +17,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded';
 import useUrlParams from '../../hooks/useUrlParams';
 import {useLocation, Link, useHistory} from 'react-router-dom';
-
+import {useCategoriesLazyQuery} from './graphql';
 const useStyles = makeStyles(theme => ({
     button: {
         display: "flex",
@@ -56,16 +55,25 @@ const Filter = () => {
     const [modal, addModal, removeModal, params] = useUrlParams();
     const {pathname} = useLocation();
     const {push} = useHistory();
+    const [fetchCategories, {data, loading}] = useCategoriesLazyQuery();
 
     const defaultForm = {
       name: params.get("name") || "",
       new: params.get("new") || "",
       featured: params.get("featured") || "",
-      min: params.get("min") || 0,
-      max: params.get("max") || 10000
+      min: +params.get("min") || 0,
+      max: +params.get("max") || 10000
     };
 
     const [form, setForm] = useState(defaultForm);
+
+    const isFilter = (modal == "filter");
+
+    useEffect(() => {
+      if(isFilter) {
+        fetchCategories();
+      }
+    }, [isFilter])
 
     const handleClose = () => {
       push(removeModal);
@@ -104,7 +112,9 @@ const Filter = () => {
       setForm(defaultForm)
     }
 
-    const isFilter = (modal == "filter");
+    if(loading) {
+      return "loading..."
+    }
 
     return (
         <div>

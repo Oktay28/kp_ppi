@@ -72,12 +72,15 @@ const ProductItem = ({product = {}}) => {
                 </div>
                 <div className={classes.productFooter}>
                     <span className={classes.productPrice}>
-                        20.99 лв.
+                        {(+product.price).toFixed(2)} лв.
                     </span>
-
-                    <span className={classes.oldPrice}>
-                        30.99 лв.
-                    </span>
+                    {
+                        product.old_price && 
+                        <span className={classes.oldPrice}>
+                            {(+product.old_price).toFixed(2)} лв.
+                        </span>
+                    }
+                    
                 </div>
             </div>
             </Link>

@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "name",
+        "image": "/public/uploads/url",
+        "description": "long description here",
+        "short_text": "short text here",
+        "price": "12.00",
+        "olg_price": "15.00",
+        "is_featured": 1,
+        "category_id": 1
+    },
+    {
+        "id": 2,
+        "name": "name",
+        "image": "/public/uploads/url",
+        "description": "long description here",
+        "short_text": "short text here",
+        "price": "12.00",
+        "olg_price": "15.00",
+        "is_featured": 1,
+        "category_id": 1
+    }
+]

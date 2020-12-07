@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client';
 
 const PRODUCT = gql`
-    query productQuery($id: ID!) {
-        product(id: $id) {
+    query productQuery($id: ID!, $userId: ID) {
+        product(id: $id, userId: $userId) {
             id
             name
             price
@@ -10,6 +10,9 @@ const PRODUCT = gql`
             description
             image
             old_price
+            Favourites {
+                id
+            }
         }
         sizes {
             id

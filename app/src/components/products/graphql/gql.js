@@ -6,8 +6,8 @@ const PRODUCTS = gql`
         $category_id: ID,
         $featured: Int,
         $new: Int,
-        $min: Float,
-        $max: Float,
+        $min: Int,
+        $max: Int,
         $page: Int
     ) {
         products(filter: {
@@ -22,6 +22,8 @@ const PRODUCTS = gql`
             products {
                 id
                 name
+                price
+                old_price
                 short_text
             }
             count
@@ -29,6 +31,16 @@ const PRODUCTS = gql`
     }
 `;
 
+const CATEGORIES = gql`
+    query {
+        categories {
+            id
+            name
+        }
+    }
+`;
+
 export {
-    PRODUCTS
+    PRODUCTS,
+    CATEGORIES
 }

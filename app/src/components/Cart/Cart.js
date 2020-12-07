@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
     makeStyles,
     ButtonGroup,
@@ -8,8 +8,10 @@ import {
     Tooltip,
     Divider
 } from '@material-ui/core';
-
+import {Link} from 'react-router-dom';
+import GlobalContext from '../context/GlobalContext';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import {useCartLazyProducts} from "../partials/cart/graphql";
 
 const useStyle = makeStyles(theme => ({
     root: {
@@ -87,54 +89,86 @@ const useStyle = makeStyles(theme => ({
 const Cart = () => {
 
     const classes = useStyle();
+    const {cart, removeFromCart, changeCount} = useContext(GlobalContext);
+    const [fetchProducts, {data, loading}] = useCartLazyProducts();
 
-    const products = [1,2];
-
+    useEffect(() => {
+          fetchProducts({
+            variables: {
+              ids: cart.map(item => item.id)
+            }
+          })
+      }, [])
+      if(loading) {
+        return "loading..."
+      }
+  
+      const products = (data && data.cartItems) || [];
+      let total = 0;
+      console.log("a")
     return (
         <div className={classes.root}>
             {
-                products.map(product => (
-<div className={classes.productRow}>
-                <img src="https://myoffices.com/code/images/pictures/5.jpg" className={classes.productImage} />
+                cart.map((item, i) => {
+                    const product = products.find(product => product.id == item.id) || {}
+                    total += (item.count * +product.price);
+                    return(
+                        <div className={classes.productRow} key={i}>
+                        <img src="https://myoffices.com/code/images/pictures/5.jpg" className={classes.productImage} />
 
-                <div className={classes.productData}>
-                    <div className={classes.productName}>
-                        Men's Suit
-                    </div>
-                    <div className={classes.productPrice}>
-                        12.00 lv
-                    </div>
-                    <div className="mb-45">
-                        Size: M
-                    </div>
-                    <div className={classes.productBottom}>
-                    <div className="btn-group">
-                        <Button size="small" variant="contained" color="primary" className={classes.optionButton}>+</Button>
-                        <TextField value={1} className={classes.counter} name="asd" type="text" variant="outlined" />
-                        <Button size="small" variant="contained" color="primary" className={classes.optionButton}>-</Button>
-                    </div>
+                        <div className={classes.productData}>
+                            <div className={classes.productName}>
+                                {product.name}
+                            </div>
+                            <div className={classes.productPrice}>
+                                {
+                                    (item.count * +product.price).toFixed(2)
+                                } лв.
+                            </div>
+                            <div className="mb-45">
+                                Size: M
+                            </div>
+                            <div className={classes.productBottom}>
+                            <div className="btn-group">
+                                <Button size="small" variant="contained" color="primary" className={classes.optionButton} onClick={() => changeCount(product.id, item.size, +1)}>+</Button>
+                                <TextField value={item.count} className={classes.counter} name="asd" type="text" variant="outlined" readOnly />
+                                <Button size="small" variant="contained" color="primary" className={classes.optionButton} onClick={() => item.count == 1 ? null : changeCount(product.id, item.size, -1)}>-</Button>
+                            </div>
 
-                    <Tooltip title="remove">
-                      <IconButton  className="mb-15">
-                        <HighlightOffIcon />
-                      </IconButton>
-                    </Tooltip>
+                            <Tooltip title="remove">
+                                <IconButton  className="mb-15" onClick={() => removeFromCart(product.id, item.size)}>
+                                    <HighlightOffIcon />
+                                </IconButton>
+                            </Tooltip>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-                ))
+                )}
+                )
             }
 
             <Divider className="mb-30"/>
             <div className={classes.totalPrice}>
-                Total price: <span className="font-weight-bold">12.00 lv</span>
+                Total price: <span className="font-weight-bold">
+                    {total.toFixed(2)} лв.
+                </span>
             </div>
             <div className="d-flex justify-content-between">
                 <span></span>
 
-                <ButtonGroup>
-                <Button size="large" variant="contained">Continue shopping</Button>
-                <Button size="large" variant="contained" color="primary">Next</Button>
+            <ButtonGroup>
+            <Button size="large" variant="contained">  
+                <Link to="/products" className="no-decoration color-dark">
+                    Continue shopping
+                </Link>
+            </Button>
+                
+                
+                <Button size="large" variant="contained" color="primary">
+                    <Link to="/order" className="no-decoration color-text">
+                        Next
+                    </Link>
+                </Button>
             </ButtonGroup>
             </div>
             

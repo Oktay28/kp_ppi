@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import ProductSlider from './ProductSlider';
 import {useProductLazyQuery} from './graphql';
 import {useParams} from 'react-router-dom';
@@ -6,16 +6,19 @@ import {
     Grid
 } from '@material-ui/core';
 import ProductData from './ProductData';
+import GlobalContext from '../context/GlobalContext';
 
 const Product = () => {
 
     const {productId} = useParams();
     const [fetchProduct, {data}] = useProductLazyQuery();
+    const {user, addToCart} = useContext(GlobalContext);
 
     useEffect(() => {
         fetchProduct({
             variables: {
-                id: productId
+                id: productId,
+                userId: user ? user.id : null
             }
         })
     }, []);
@@ -35,7 +38,7 @@ const Product = () => {
                 </Grid>
 
                 <Grid item xs={12} md={5}>
-                    <ProductData product={product} sizes={sizes} />
+                    <ProductData addToCart={addToCart} user={user} product={product} sizes={sizes} />
                 </Grid>
 
             </Grid>

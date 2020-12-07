@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -17,6 +17,8 @@ import useUrlParams from '../../../hooks/useUrlParams';
 import {Link, useHistory} from 'react-router-dom';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Tooltip from '@material-ui/core/Tooltip';
+import GlobalContext from '../../context/GlobalContext';
+import {useCartLazyProducts} from './graphql';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -43,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
       }
     },
     productName: {
-      fontSize: "40px"
+      fontSize: "40px",
+      marginRight: "15px"
     },
     productRow: {
       display: "flex",
@@ -61,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "30px",
       color: theme.palette.primary.dark,
       fontWeight: "bold",
-      flex: "1"
+      marginBottom: "10px"
     },
     totalPrice: {
       fontSize: "26px",
@@ -82,6 +85,31 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         alignItems: "flex-start"
       }
+    },
+    dot: {
+      backgroundColor: theme.palette.primary.dark,
+      position: "absolute",
+      right: "0",
+      bottom: "0",
+      width: "20px",
+      height: "20px",
+      borderRadius: "50%",
+      fontSize: "14px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      border: "1px solid #ffffff"
+    },
+    size: {
+      fontSize: "16px",
+      marginLeft: "10px"
+    },
+    count: {
+      fontSize: "16px",
+      marginTop: "10px"
+    },
+    priceColumn: {
+      flex: "1"
     }
   }));
   
@@ -95,6 +123,8 @@ const Cart = () => {
     const classes = useStyles();
     const [modal, addModal, removeModal] = useUrlParams();
     const {push} = useHistory();
+    const {cart, removeFromCart} = useContext(GlobalContext);
+    const [fetchProducts, {data, loading}] = useCartLazyProducts();
 
     const isCart = (modal == "cart");
 
@@ -102,13 +132,31 @@ const Cart = () => {
       push(removeModal);
     };
 
-    const products = [1];
+    useEffect(() => {
+      if(isCart) {
+        fetchProducts({
+          variables: {
+            ids: cart.map(item => item.id)
+          }
+        })
+      }
+    }, [isCart])
+    if(loading) {
+      return "loading..."
+    }
+
+
+    const products = (data && data.cartItems) || [];
+    let total = 0;
 
     return (
         <div>
-           <Link to={isCart ? removeModal : addModal("cart")} className={`header-link ${isCart ? "active-header-link" : ""}`}>
+           <Link to={isCart ? removeModal : addModal("cart")} className={`header-link position-relative${isCart ? "active-header-link" : ""}`}>
                 <IconButton color="inherit">
                   <ShoppingCartIcon />
+                  {
+                    cart.length ? <span className={classes.dot}>{cart.length}</span> : null
+                  }
                 </IconButton>
             </Link>
 
@@ -129,31 +177,43 @@ const Cart = () => {
         <List className={classes.list}>
 
           {
-            products.length ? 
+            (cart.length && products.length) ? 
 
             <>
 
             {
-              products.map(product => (
-                <ListItem key={product}>
+              cart.map((item, i) => {
+                const product = products.find(product => product.id == item.id) || {}
+                total += (item.count * +product.price);
+                return(
+                <ListItem key={i}>
        
             <Grid container spacing={2} className="mb-30">
               <Grid item xs={12} md={8}>
                   <div className={`${classes.productRow} ${classes.productImageRow}`}>
                     <img src="https://photojournal.jpl.nasa.gov/jpeg/PIA23689.jpg" className={classes.img} />
                     <div className={classes.productName}>
-                      product name here
+                      {product.name} <span className={classes.size}>{item.size}</span> 
                     </div>
                 </div>
               </Grid>
   
               <Grid item xs={12} md={4}>
                 <div className={classes.productRow}>
-                    <div className={classes.productPrice}>
-                      20 lv.
+                  <div className={classes.priceColumn}>
+                  <div className={classes.productPrice}>
+                     
+                    {(item.count * +product.price).toFixed(2)} лв.
                     </div>
+                    <div>
+                      {
+                        (item.count != 1) &&<span className={classes.count}>({item.count} x {(+product.price).toFixed(2)} лв.)</span>
+                      }
+                    </div>
+                  </div>
+
                     <Tooltip title="remove">
-                      <IconButton  className="mb-15">
+                      <IconButton  className="mb-15" onClick={() => removeFromCart(product.id, item.size)}>
                         <HighlightOffIcon />
                       </IconButton>
                     </Tooltip>
@@ -163,13 +223,13 @@ const Cart = () => {
             </Grid>
         
           </ListItem>
-              ))
+              )})
             }
 
           <Divider className="mb-30"/>
           <div className={classes.cartBottom}>
             <div className={classes.totalPrice}>
-              Total cost: <span className="font-weight-bold">123.45 lv</span>
+              Total cost: <span className="font-weight-bold">{total.toFixed(2)} лв.</span>
             </div>
 
             <Link to="/cart" className="no-decoration">
@@ -188,9 +248,6 @@ const Cart = () => {
               Empty cart
             </h2>
           }
-
-
-          
 
         </List>
       </Dialog>

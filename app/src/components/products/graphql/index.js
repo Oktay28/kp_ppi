@@ -1,7 +1,8 @@
 import {useLazyQuery} from '@apollo/client';
 
 import {
-    PRODUCTS
+    PRODUCTS,
+    CATEGORIES
 } from './gql';
 
 const useProductsLazyQuery = () => {
@@ -12,6 +13,16 @@ const useProductsLazyQuery = () => {
     return query;
 }
 
+const useCategoriesLazyQuery = () => {
+    const query = useLazyQuery(CATEGORIES, {
+        errorPolicy: "all",
+        fetchPolicy: "cache-and-network"
+    })
+
+    return query;
+}
+
 export {
-    useProductsLazyQuery
+    useProductsLazyQuery,
+    useCategoriesLazyQuery
 }
