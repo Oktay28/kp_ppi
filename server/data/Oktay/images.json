@@ -1,0 +1,40 @@
+[
+    {
+        "url": "/public/uploads/qke1.png",
+        "product_id": 1
+    },
+    {
+        "url": "/public/uploads/qke1_1.png",
+        "product_id": 1
+    },
+    {
+        "url": "/public/uploads/qke1_2.png",
+        "product_id": 1
+    },
+
+    {
+        "url": "/public/uploads/qke2.png",
+        "product_id": 2
+    },
+    {
+        "url": "/public/uploads/qke2_1.png",
+        "product_id": 2
+    },
+    {
+        "url": "/public/uploads/qke2_2.png",
+        "product_id": 2
+    },
+
+    {
+        "url": "/public/uploads/qke3.webp",
+        "product_id": 3
+    },
+    {
+        "url": "/public/uploads/qke3_1.webp",
+        "product_id": 3
+    },
+    {
+        "url": "/public/uploads/qke3_2.webp",
+        "product_id": 3
+    }
+]

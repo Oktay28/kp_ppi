@@ -10,7 +10,7 @@ import Delivery from './Delivery';
 import Payment from './Payment';
 import GlobalContext from '../context/GlobalContext';
 import Done from './Done';
-import {Redirect} from 'react-router-dom';
+import Loader from '../partials/Loader';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,7 +92,7 @@ export default function HorizontalLinearStepper() {
   }, [user])
 
   if(loading) {
-    return "loading...";
+    return <Loader />
   }
 
   function submitForm(formData) {

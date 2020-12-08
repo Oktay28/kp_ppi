@@ -7,6 +7,7 @@ import ProductItem from './ProductItem';
 import Filter from './Filter';
 import {useProductsLazyQuery} from './graphql';
 import {useLocation} from 'react-router-dom';
+import Loader from '../partials/Loader';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -36,13 +37,14 @@ const Products = () => {
                 page: +query.get("page"),
                 min: +query.get("min"),
                 max: +query.get("max"),
-                category_id: query.get("category")
+                category_id: query.get("category"),
+                discount: +query.get("discount")
             }
         });
     }, [query.toString()]);
 
     if(!data) {
-        return "loading...";
+        return <Loader />
     }
 
     const products = data.products?.products || [];

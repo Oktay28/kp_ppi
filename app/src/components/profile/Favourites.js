@@ -11,7 +11,7 @@ import {
     Tooltip,
     IconButton
 } from '@material-ui/core';
-
+import Loader from '../partials/Loader';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const useStyles = makeStyles(theme => ({
@@ -76,7 +76,7 @@ const Favourites = () => {
     }, [user])
 
     if(!data) {
-        return "loading...";
+        return <Loader />
     }
 
     const favourites = data.favourites;

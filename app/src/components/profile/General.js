@@ -11,10 +11,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import GlobalContext from '../context/GlobalContext';
-import { useMeLazyQuery } from './graphql';
+import { useMeLazyQuery, useUpdateMeMutation } from './graphql';
 import TextField from '@material-ui/core/TextField';
 import { Formik } from 'formik';
-
+import Loader from '../partials/Loader';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -35,8 +35,14 @@ let isSubmit = false;
 const General = () => {
     const classes = useStyles();
     const { user } = useContext(GlobalContext);
-    const [fetchProfile, { data }] = useMeLazyQuery();
+    const [fetchProfile, { data, loading, refetch }] = useMeLazyQuery();
     const [edit, setEdit] = useState(false);
+    const [updateMe, {loading: updateLoading}] = useUpdateMeMutation(async() => {
+        await refetch();
+        setEdit(false);
+    });
+
+
     useEffect(() => {
        
         fetchProfile({
@@ -47,7 +53,7 @@ const General = () => {
     }, [user])
 
     if (!data) {
-        return "loading...";
+        return <Loader />;
     }
 
     const me = data.me || {};
@@ -66,8 +72,6 @@ const General = () => {
 
                 if (!values.name) {
                     errors.name = 'Required'
-                } else if (!(/^[a-zA-Z ]+$/.test(values.name))) {
-                    errors.name = "Invalid format"
                 }
 
                 return errors;
@@ -78,7 +82,13 @@ const General = () => {
             }}
             onSubmit={(values) => {
                 if(isSubmit) {
-                    console.log(11)
+                    updateMe({
+                        variables: {
+                            ...values,
+                            id: user?.id
+                        }
+                    })
+                    isSubmit = false;
                 } else {
                     isSubmit = true;
                 }
@@ -96,7 +106,7 @@ const General = () => {
                 handleReset,
                 resetForm
             }) => (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className={(loading || updateLoading) ? "loading" : ""}>
                     <Card className={classes.root}>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -147,16 +157,17 @@ const General = () => {
                                                             edit ? 
                                                             <TextField
                                                             fullWidth
-                                                            id="date"
+                                                            name="birth_year"
                                                             label="Birthday"
                                                             type="date"
-                                                            defaultValue={values.date_year || ""}
+                                                            value={values.birth_year || ""}
+                                                            onChange={handleChange}
                                                             className={classes.textField}
                                                             InputLabelProps={{
                                                               shrink: true,
                                                             }}
                                                           />: 
-                                                          me.birth_year
+                                                          me.birth_year ? new Date(+(me.birth_year)).toDateString() : ""
                                                         }
                                                         </TableCell>
                                                 </TableRow>

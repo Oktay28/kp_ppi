@@ -19,6 +19,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Tooltip from '@material-ui/core/Tooltip';
 import GlobalContext from '../../context/GlobalContext';
 import {useCartLazyProducts} from './graphql';
+import Loader from '../Loader';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -142,7 +143,7 @@ const Cart = () => {
       }
     }, [isCart])
     if(loading) {
-      return "loading..."
+      return <Loader />
     }
 
 

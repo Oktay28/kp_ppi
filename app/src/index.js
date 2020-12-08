@@ -6,11 +6,11 @@ import client from './client';
 import { ApolloProvider } from '@apollo/client';
 import {BrowserRouter} from 'react-router-dom';
 import {ThemeProvider, unstable_createMuiStrictModeTheme} from '@material-ui/core';
+import GlobalStyles from './GlobalStyles';
+import {GlobalProvider} from './components/context/GlobalContext';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './css/stylesheet.min.css';
-import GlobalStyles from './GlobalStyles';
-import {GlobalProvider} from './components/context/GlobalContext';
 
 const theme = unstable_createMuiStrictModeTheme({
   palette: {

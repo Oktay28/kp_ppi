@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "name": "Мъжко яке",
+        "image": "/public/uploads/qke1.jpg",
+        "description": "50% вълна, 40% полиестер, 10% други нишки",
+        "price": "54.93",
+        "old_price": "169.00",
+        "is_featured": 1,
+        "category_id": 1
+    },
+    {
+        "id": 2,
+        "name": "Мъжко сако",
+        "image": "/public/uploads/qke2.jpg",
+        "description": "Нов продукт. Полиестер",
+        "price": "20.54",
+        "old_price": "79.00",
+        "category_id": 1
+    },
+    {
+        "id": 3,
+        "name": "Преходно яке в сиво / черно",
+        "image": "/public/uploads/qke3.webp",
+        "description": "15% Памук, 10% Полиамид, 75% Полиестер. Нееластичен",
+        "price": "77.90",
+        "category_id": 1
+    }
+]

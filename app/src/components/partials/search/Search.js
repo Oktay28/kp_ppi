@@ -12,6 +12,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {useSearchLazyQuery} from './graphql';
+import Loader from '../Loader';
 
 const useStyles = makeStyles(theme => ({
   searchDialog: {
@@ -121,7 +122,7 @@ const Search = () => {
             <TextField onChange={event => setName(event.target.value)} value={name} name="name" label="Search by name" type="text" variant="outlined" fullWidth className="mb-30" />
 
             {
-              loading ? "loading..." : 
+              loading ? <Loader />: 
               name && (products.length ? 
 
                 <>

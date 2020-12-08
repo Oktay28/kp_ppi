@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box';
 import Loader from '../partials/Loader';
 import General from './General';
 import Favourites from './Favourites';
+import Payment from './Payment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,26 +75,20 @@ const Profile = () => {
             scrollButtons="on"
           >
             <Tab label="Profile" {...a11yProps(0)} />
-            <Tab label="Delivery" {...a11yProps(1)} />
-            <Tab label="Favourites" {...a11yProps(2)} />
-            <Tab label="History" {...a11yProps(3)} />
-            <Tab label="Payment" {...a11yProps(4)} />
+            <Tab label="Favourites" {...a11yProps(1)} />
+            <Tab label="Payment" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
             <General />
         </TabPanel>
+
         <TabPanel value={value} index={1}>
-          Item Two
+          <Favourites />
         </TabPanel>
+
         <TabPanel value={value} index={2}>
-        <Favourites />
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          Item Four
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          Item Four
+          <Payment />
         </TabPanel>
       </div>
 

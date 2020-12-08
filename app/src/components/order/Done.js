@@ -5,6 +5,7 @@ import {
 import Img from '../partials/Img'
 import GlobalContext from '../context/GlobalContext';
 import {useSaveCardMutation} from './graphql';
+import Loader from '../partials/Loader';
 
 const useStyles = makeStyles(theme => ({
     done: {
@@ -48,7 +49,7 @@ const Done = ({data}) => {
     }, [isSave, user])
 
     if(isSave && !saveCardData) {
-        return "loading...";
+        return <Loader />;
     }
 
     return (

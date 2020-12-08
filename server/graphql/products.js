@@ -29,6 +29,7 @@ const productType = gql`
         max: Int
         page: Int
         limit: Int
+        discount: Int
     }
 
     extend type Query {
@@ -67,7 +68,7 @@ const productQuery = {
     },
     products: async(parent, {filter}, {models}) => {
         const where = {};
-        console.log(filter)
+
         if(filter.name) {
             where.name = models.Sequelize.where(
                 models.Sequelize.fn('lower', models.Sequelize.col('Products.name')),
@@ -87,6 +88,13 @@ const productQuery = {
             where.is_featured = filter.is_featured
         }
 
+        if(filter.discount) {
+
+            where.old_price = {
+                [models.Sequelize.Op.not]: null
+            }
+        }
+        console.log(where)
         if(filter.is_new) {
             const d = new Date();
             d.setMonth(d.getMonth() - 3);

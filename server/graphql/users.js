@@ -24,6 +24,7 @@ const userType = gql`
 
     extend type Mutation {
         updateMe(id: ID!, name: String, email: String, birth_year: String, password: String, address: String, phone: String, card: String): Boolean
+        removeCard(id: ID!): Boolean
     }
 
 `;
@@ -69,7 +70,19 @@ const userMutation= {
         }
     },
     updateMe: async(parent, {id, ...rest}, {models}) => {
+        console.log(rest)
         const updated = await models.User.update(rest, {
+            where: {
+                id
+            }
+        })
+
+        return !!updated;
+    },
+    removeCard: async(parent, {id}, {models}) => {
+        const updated = await models.User.update({
+            card: null
+        }, {
             where: {
                 id
             }

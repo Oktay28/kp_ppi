@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import ProductData from './ProductData';
 import GlobalContext from '../context/GlobalContext';
+import Loader from '../partials/Loader';
 
 const Product = () => {
 
@@ -24,7 +25,7 @@ const Product = () => {
     }, [user]);
 
     if(!data) {
-        return "loading...";
+        return <Loader />;
     }
 
     const product = data.product || {};

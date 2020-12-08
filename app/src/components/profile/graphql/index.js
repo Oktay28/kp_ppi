@@ -3,7 +3,9 @@ import {useLazyQuery, useMutation} from '@apollo/client';
 import {
     PROFILE,
     FAVOURITES,
-    REMOVE_FAVOURITE
+    REMOVE_FAVOURITE,
+    UPDATE_ME,
+    REMOVE_CARD
 } from './gql';
 
 import {toast} from 'react-toastify';
@@ -37,8 +39,34 @@ const useRemoveFavouriteMutation = (onComplete) => {
     return mutation;
 }
 
+const useUpdateMeMutation = (onComplete) => {
+    const mutation = useMutation(UPDATE_ME, {
+        errorPolicy: "all",
+        onCompleted: async () => {
+            await onComplete();
+            toast.info("Profile Updated!");
+        }
+    })
+
+    return mutation;
+}
+
+const useRemoveCardMutation = (onComplete) => {
+    const mutation = useMutation(REMOVE_CARD, {
+        errorPolicy: "all",
+        onCompleted: async () => {
+            await onComplete();
+            toast.info("Card Removed!");
+        }
+    })
+
+    return mutation;
+}
+
 export {
     useMeLazyQuery,
     useFavouritesLazyQuery,
-    useRemoveFavouriteMutation
+    useRemoveFavouriteMutation,
+    useUpdateMeMutation,
+    useRemoveCardMutation
 }

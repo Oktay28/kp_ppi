@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {
     makeStyles,
     ButtonGroup,
@@ -12,6 +12,7 @@ import {Link} from 'react-router-dom';
 import GlobalContext from '../context/GlobalContext';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import {useCartLazyProducts} from "../partials/cart/graphql";
+import Loader from '../partials/Loader';
 
 const useStyle = makeStyles(theme => ({
     root: {
@@ -100,7 +101,7 @@ const Cart = () => {
           })
       }, [])
       if(loading) {
-        return "loading..."
+        return <Loader />;
       }
   
       const products = (data && data.cartItems) || [];

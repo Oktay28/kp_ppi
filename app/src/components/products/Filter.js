@@ -18,6 +18,8 @@ import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded';
 import useUrlParams from '../../hooks/useUrlParams';
 import {useLocation, Link, useHistory} from 'react-router-dom';
 import {useCategoriesLazyQuery} from './graphql';
+import Loader from '../partials/Loader';
+
 const useStyles = makeStyles(theme => ({
     button: {
         display: "flex",
@@ -63,7 +65,8 @@ const Filter = () => {
       featured: 0,
       min: 0,
       max: 10000,
-      category: 0
+      category: 0,
+      discount: ""
     };
 
     const [form, setForm] = useState({
@@ -72,7 +75,8 @@ const Filter = () => {
       featured: +params.get("featured") || 0,
       min: +params.get("min") || 0,
       max: +params.get("max") || 10000,
-      category: params.get("category")
+      category: params.get("category"),
+      discount: params.get("discount") || ""
     });
 
     const isFilter = (modal == "filter");
@@ -117,12 +121,11 @@ const Filter = () => {
     }
 
     function reset() {
-      console.log(defaultForm)
       setForm(defaultForm)
     }
 
     if(loading) {
-      return "loading..."
+      return <Loader />
     }
 
     const categories = data?.categories || [];
@@ -153,6 +156,13 @@ const Filter = () => {
         <FormControl component="fieldset" fullWidth>
             <FormLabel component="legend">New products</FormLabel>
             <FormControlLabel control={<Checkbox name="new" onChange={changeCheckbox} value="1" checked={!!form.new}/>} label="Show only new products" />
+          </FormControl>
+        </div>
+
+        <div className="mb-30">
+        <FormControl component="fieldset" fullWidth>
+            <FormLabel component="legend">Discount</FormLabel>
+            <FormControlLabel control={<Checkbox name="discount" onChange={changeCheckbox} value="1" checked={!!form.discount}/>} label="Show only discount products" />
           </FormControl>
         </div>
 

@@ -1,6 +1,7 @@
 import React, {createContext, useState, useEffect} from 'react';
 import {useMeLazyQuery} from './graphql';
 import {toast} from 'react-toastify';
+import Loader from '../partials/Loader';
 
 const GlobalContext = createContext();
 
@@ -38,7 +39,7 @@ const GlobalProvider = ({children}) => {
     }, [data]);
 
     if(!logged && id && !data) {
-        return "loading...";
+        return <Loader />;
     }
 
     const clearCart = () => {

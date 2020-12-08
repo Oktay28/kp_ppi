@@ -8,6 +8,7 @@ const PROFILE = gql`
             birth_year
             address
             phone
+            card
         }
     }
 `;
@@ -31,8 +32,22 @@ const REMOVE_FAVOURITE = gql`
     }
 `;
 
+const UPDATE_ME = gql`
+    mutation updateMeMutation($id: ID!, $name: String, $email: String, $birth_year: String, $password: String, $address: String, $phone: String) {
+        updateMe(id: $id, name: $name, email: $email, birth_year: $birth_year, password: $password, address: $address, phone: $phone) 
+    }
+`;
+
+const REMOVE_CARD = gql`
+    mutation removeCardMutation($id: ID!) {
+        removeCard(id: $id)
+    }
+`;
+
 export {
     PROFILE,
     FAVOURITES,
-    REMOVE_FAVOURITE
+    REMOVE_FAVOURITE,
+    UPDATE_ME,
+    REMOVE_CARD
 }

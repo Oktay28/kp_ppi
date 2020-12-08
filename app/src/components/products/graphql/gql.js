@@ -8,7 +8,8 @@ const PRODUCTS = gql`
         $new: Int,
         $min: Int,
         $max: Int,
-        $page: Int
+        $page: Int,
+        $discount: Int
     ) {
         products(filter: {
             name: $name,
@@ -17,7 +18,8 @@ const PRODUCTS = gql`
             is_new: $new,
             min: $min,
             max: $max,
-            page: $page
+            page: $page,
+            discount: $discount
         }) {
             products {
                 id
