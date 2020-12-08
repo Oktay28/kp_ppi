@@ -105,7 +105,6 @@ const Cart = () => {
   
       const products = (data && data.cartItems) || [];
       let total = 0;
-      console.log("a")
     return (
         <div className={classes.root}>
             {
@@ -163,12 +162,17 @@ const Cart = () => {
                 </Link>
             </Button>
                 
-                
-                <Button size="large" variant="contained" color="primary">
-                    <Link to="/order" className="no-decoration color-text">
-                        Next
-                    </Link>
-                </Button>
+                {
+                    (cart.length != 0) && 
+                    (
+                        <Button size="large" variant="contained" color="primary">
+                            <Link to="/order" className="no-decoration color-text">
+                                Next
+                            </Link>
+                        </Button>
+                    )
+                }
+
             </ButtonGroup>
             </div>
             

@@ -2,8 +2,10 @@ import React, {useRef, useEffect} from 'react';
 import {Formik} from 'formik';
 import {TextField } from '@material-ui/core';
 
-const General = ({next, submitForm, form = {}}) => {
+
+const General = ({next, submitForm, form = {}, user = {}}) => {
     const formRef = useRef();
+
     useEffect(() => {
         if(next) {
             formRef.current.handleSubmit()
@@ -14,7 +16,7 @@ const General = ({next, submitForm, form = {}}) => {
         <div>
             <Formik
                 innerRef={formRef}
-                initialValues={{ name: form.name || "", email: form.email || "", phone: form.phone || "" }}
+                initialValues={{ name: form.name || user?.name || "", email: form.email || user?.email || "", phone: form.phone || user?.phone || "" }}
                 validate={values => {
                     const errors = {};
 

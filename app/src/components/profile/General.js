@@ -37,14 +37,14 @@ const General = () => {
     const { user } = useContext(GlobalContext);
     const [fetchProfile, { data }] = useMeLazyQuery();
     const [edit, setEdit] = useState(false);
-
     useEffect(() => {
+       
         fetchProfile({
             variables: {
-                id: user.id
+                id: user?.id
             }
         })
-    }, [])
+    }, [user])
 
     if (!data) {
         return "loading...";

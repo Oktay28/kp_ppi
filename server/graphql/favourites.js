@@ -5,22 +5,37 @@ const favouriteType = gql`
         id: ID
         product_id: ID
         user_id: ID
+        Product: Product
     }
 
     extend type Query {
-        favourites(user_id: ID!): [Product]
+        favourites(user_id: ID!): [Favourite]
     }
 
     extend type Mutation {
-        addToFavourite(product_id: ID!, user_id: ID!): Boolean 
+        addToFavourite(product_id: ID!, user_id: ID!): Boolean
+        removeFromFavourites(id: ID!): Boolean
     }
 `;
 
 const favouriteQuery = {
     favourites: async (parent, {user_id}, {models}) => {
-        const products = await models.Products.findAll({
 
+        const products = await models.Favourites.findAll({
+            where: {
+                user_id
+            },
+            raw: true,
+            nest: true,
+            include: [
+                {
+                    model: models.Products,
+                    left: true
+                }
+            ]
         })
+
+        console.log(products)
 
         return products;
     }
@@ -34,6 +49,15 @@ const favouriteMutation = {
         })
 
         return !!isUpdated;
+    },
+    removeFromFavourites: async(parent, {id}, {models}) => {
+        const isRemoved = models.Favourites.destroy({
+            where: {
+                id
+            }
+        })
+
+        return !!isRemoved;
     }
 }
 

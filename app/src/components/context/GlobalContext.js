@@ -41,6 +41,10 @@ const GlobalProvider = ({children}) => {
         return "loading...";
     }
 
+    const clearCart = () => {
+        setCart([]);
+    }
+
     function logUser(data) {
         setLogged(true)
         fetchUser(data);
@@ -91,7 +95,8 @@ const GlobalProvider = ({children}) => {
             cart,
             removeFromCart,
             changeCount,
-            logout
+            logout,
+            clearCart
         }}>
             {children}
         </GlobalContext.Provider>

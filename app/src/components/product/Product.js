@@ -29,7 +29,7 @@ const Product = () => {
 
     const product = data.product || {};
     const sizes = data.sizes || [];
-
+    
     return (
         <div>
             <Grid container spacing={3}>

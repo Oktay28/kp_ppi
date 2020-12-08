@@ -2,7 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import {Formik} from 'formik';
 import {TextField } from '@material-ui/core';
 
-const Delivery = ({next, submitForm, form = {}}) => {
+const Delivery = ({next, submitForm, form = {}, user}) => {
     const formRef = useRef();
     useEffect(() => {
         if(next) {
@@ -14,7 +14,7 @@ const Delivery = ({next, submitForm, form = {}}) => {
         <div>
             <Formik
                 innerRef={formRef}
-                initialValues={{ address: form.address || ""}}
+                initialValues={{ address: form.address || user?.address || ""}}
                 validate={values => {
                     const errors = {};
 

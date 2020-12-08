@@ -10,7 +10,7 @@ const userType = gql`
         password: String
         address: String
         phone: String
-        cart_number: String
+        card: String
     }
 
     extend type Query {
@@ -23,7 +23,7 @@ const userType = gql`
     }
 
     extend type Mutation {
-        updateMe(id: ID!, name: String, email: String, birth_year: String, password: String, address: String, phone: String, cart_number: String): Boolean
+        updateMe(id: ID!, name: String, email: String, birth_year: String, password: String, address: String, phone: String, card: String): Boolean
     }
 
 `;

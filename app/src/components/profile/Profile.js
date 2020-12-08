@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Loader from '../partials/Loader';
 import General from './General';
+import Favourites from './Favourites';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,7 +87,7 @@ const Profile = () => {
           Item Two
         </TabPanel>
         <TabPanel value={value} index={2}>
-        <Loader />
+        <Favourites />
         </TabPanel>
         <TabPanel value={value} index={3}>
           Item Four
