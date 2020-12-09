@@ -1,0 +1,868 @@
+[
+    {
+        "id": 181,
+        "name": "суитшърти саморай",
+        "image": "/public/uploads/181.jpg",
+        "description": "",
+        "short_text": "Елегантен и удобрен за всеки сезон от годината",
+        "price": "25.00",
+        "old_price": "40.00",
+        "category_id": 9
+    },
+    {
+        "id": 182,
+        "name": "черен суитшърти с индианец",
+        "image": "/public/uploads/182.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "30.00",
+        "category_id": 9
+    },
+    {
+        "id": 183,
+        "name": "суитшърт",
+        "image": "/public/uploads/183.png",
+        "description": "",
+        "short_text": "Удобрен спортен суитшърти за тренировки",
+        "price": "15.00",
+        "old_price": "25.00",
+        "category_id": 9
+    },
+    {
+        "id": 184,
+        "name": "суитшърт на ивици",
+        "image": "/public/uploads/184.jpg",
+        "description": "long description here",
+        "short_text": "short text here",
+        "price": "18.00",
+        "category_id": 9
+    },
+    {
+        "id": 185,
+        "name": "суитшърт сив",
+        "image": "/public/uploads/185.png",
+        "description": "",
+        "short_text": "",
+        "price": "35.00",
+        "category_id": 9
+    },
+    {
+        "id": 186,
+        "name": "суитшърти Anaconda",
+        "image": "/public/uploads/186.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "12.00",
+        "old_price": "65.00",
+        "category_id": 9
+    },
+    {
+        "id": 187,
+        "name": "суитшърти Head",
+        "image": "/public/uploads/187.jpeg",
+        "description": "long description here",
+        "short_text": "short text here",
+        "price": "30.00",
+        "category_id": 9
+    },
+    {
+        "id": 188,
+        "name": "суитшърт черен",
+        "image": "/public/uploads/188.jpeg",
+        "description": "",
+        "short_text": "",
+        "price": "20.00",
+        "old_price": "50.00",
+        "category_id": 9
+    },
+    {
+        "id": 189,
+        "name": "елегантен спортно суитшърт",
+        "image": "/public/uploads/189.jpeg",
+        "description": "",
+        "short_text": "",
+        "price": "60.00",
+        "old_price": "80.00",
+        "category_id": 9
+    },
+    {
+        "id": 190,
+        "name": "червен суитшърт",
+        "image": "/public/uploads/190.jfit",
+        "description": "",
+        "short_text": "",
+        "price": "42.00",
+        "old_price": "65.00",
+        "category_id": 9
+    },
+    {
+        "id": 191,
+        "name": "суитшърт",
+        "image": "/public/uploads/191.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "22.00",
+        "category_id": 9
+    },
+    {
+        "id": 192,
+        "name": "сив суитшърт",
+        "image": "/public/uploads/192.jpg",
+        "description": "",
+        "short_text": "Елегантен и удобрен",
+        "price": "30.00",
+        "old_price": "35.00",
+        "category_id": 9
+    },
+    {
+        "id": 193,
+        "name": "Сив суитшърт Nike AIR",
+        "image": "/public/uploads/193.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "80.00",
+        "old_price": "95.00",
+        "category_id": 9
+    },
+    {
+        "id": 194,
+        "name": "суитшърт Adidas",
+        "image": "/public/uploads/194.png",
+        "description": "",
+        "short_text": "",
+        "price": "52.00",
+        "category_id": 9
+    },
+    {
+        "id": 195,
+        "name": "зелен суитшърт със сини ракави и качулка",
+        "image": "/public/uploads/195.png",
+        "description": "",
+        "short_text": "",
+        "price": "15.00",
+        "category_id": 9
+    },
+    {
+        "id": 196,
+        "name": "Тигров суитшърт на Adidas",
+        "image": "/public/uploads/196.jfit",
+        "description": "",
+        "short_text": "",
+        "price": "90.00",
+        "old_price": "110.00",
+        "category_id": 9
+    },
+    {
+        "id": 197,
+        "name": "черен суитшърт AIR",
+        "image": "/public/uploads/197.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "62.00",
+        "old_price": "85.00",
+        "category_id": 9
+    },
+    {
+        "id": 198,
+        "name": "суитшърт с ликът на Апостола",
+        "image": "/public/uploads/198.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "36.00",
+        "is_featured": 1,
+        "category_id": 9
+    },
+    {
+        "id": 199,
+        "name": "суитшърт на Audi",
+        "image": "/public/uploads/199.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "25.00",
+        "old_price": "45.00",
+        "category_id": 9
+    },
+    {
+        "id": 200,
+        "name": "суитшърт на отбор Левски",
+        "image": "/public/uploads/200.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "26.00",
+        "category_id": 9
+    },
+    {
+        "id": 201,
+        "name": "Черен суитшърт",
+        "image": "/public/uploads/201.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "32.00",
+        "category_id": 9
+    },
+    {
+        "id": 202,
+        "name": "суитшърт с надпис България над всичко",
+        "image": "/public/uploads/202.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "32.00",
+        "is_featured": 1,
+        "category_id": 9
+    },
+    {
+        "id": 203,
+        "name": "суитшърт с Българският герб",
+        "image": "/public/uploads/203.jpg",
+        "description": "",
+        "short_text": "Уникален националистически суитшърт",
+        "price": "42.00",
+        "is_featured": 1,
+        "category_id": 9
+    },
+    {
+        "id": 204,
+        "name": "суитшърт",
+        "image": "/public/uploads/204.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "20.00",
+        "old_price": "25.00",
+        "category_id": 9
+    },
+    {
+        "id": 205,
+        "name": "Син суитшърт с маска",
+        "image": "/public/uploads/205.jfit",
+        "description": "",
+        "short_text": "",
+        "price": "32.00",
+        "old_price": "40.00",
+        "category_id": 9
+    },
+    {
+        "id": 206,
+        "name": "сив суитшърт",
+        "image": "/public/uploads/206.jpg",
+        "description": "",
+        "short_text": "",
+        "category_id": 9
+    },
+    {
+        "id": 207,
+        "name": "суитшърт",
+        "image": "/public/uploads/207.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "52.00",
+        "old_price": "55.00",
+        "is_featured": 1,
+        "category_id": 9
+    },
+    {
+        "id": 208,
+        "name": "Син суитшърт",
+        "image": "/public/uploads/208.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "35.00",
+        "category_id": 9
+    },
+    {
+        "id": 209,
+        "name": "Сив суитшърт с черни ракави",
+        "image": "/public/uploads/209.jfit",
+        "description": "",
+        "short_text": "",
+        "price": "20.00",
+        "category_id": 9
+    },
+    {
+        "id": 210,
+        "name": "СИН КЛАСИЧЕСКИ СТРУКТУРИРАН КОСТЮМ",
+        "image": "/public/uploads/210.jpg",
+        "description": "Елегантен костюм от фина вълна с еластан, подходящ за всякакви случаи.",
+        "short_text": "Цвят синьо.",
+        "price": "314.99",
+        "old_price": "449.99",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 211,
+        "name": "КЛАСИЧЕСКИ ЧЕРЕН КОСТЮМ",
+        "image": "/public/uploads/211.jpg",
+        "description": "Елегантен костюм от фина вълна с еластан, подходящ за всякакви случаи.",
+        "short_text": "Цвят черен.",
+        "price": "209.99",
+        "old_price": "299.99",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 212,
+        "name": "МЪЖКИ КОСТЮМ ФЕРАРА",
+        "image": "/public/uploads/212.jpeg",
+        "description": "Модел Ферара се откроява със своя съвременен дизайн, благодарение на своите интересни фини декорации, забелязващи се по ревера и филетките. Съставът на костюма е 80% „студена вълна“ и 20% полиестер ... съчетание, което е изключително приятно при допир. При изработката на модела отново залагаме основно на „студена вълна“. Тя се произвежда от тънка прежда много фина вълна и затова платът е толкова лек. Облеклата от такива тъкани изолират тялото от външните условия.",
+        "short_text": "",
+        "price": "348.00",
+        "category_id": 8
+    },
+    {
+        "id": 213,
+        "name": "МЪЖКИ КОСТЮМ БОГАРТ",
+        "image": "/public/uploads/213.jpeg",
+        "description": "Костюм Богарт е отличен избор за всеки официален повод със своята вталена и елегантна визия, а съчетанието между бяло и черно е незименна част от вечната класика. Съставът на костюма е 80% „студена вълна“ и 20% полиестер ... съчетание, което е изключително приятно при допир. При изработката на модела отново залагаме основно на „студена вълна“. Тя се произвежда от тънка прежда много фина вълна и затова платът е толкова лек. Облеклата от такива тъкани изолират тялото от външните условия.",
+        "short_text": "",
+        "price": "239.00",
+        "old_price": "389.00",
+        "category_id": 8
+    },
+    {
+        "id": 214,
+        "name": "МЪЖКИ КОСТЮМ ПЛАТИНУМ",
+        "image": "/public/uploads/214.jpeg",
+        "description": "Платинум е характерно както за строго официален бизнес код, така и за неформалната визия на стилния градски типаж. Съставът на костюма е 80% „студена вълна“ и 20% полиестер ... съчетание, което е изключително приятно при допир. При изработката на модела отново залагаме основно на „студена вълна“. Тя се произвежда от тънка прежда много фина вълна и затова платът е толкова лек. Облеклата от такива тъкани изолират тялото от външните условия.",
+        "short_text": "Mодел Платинум е перфектното съчетание между вечната класика и последните модни тенденции, благодарение на своя дизайн. Двойното закопчаване на модел",
+        "price": "219.00",
+        "old_price": "319.00",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 215,
+        "name": "МЪЖКИ КОСТЮМ МИКЕЛЕ",
+        "image": "/public/uploads/215.jpeg",
+        "description": "Модел Микеле съчетава в себе си елегантния сатенен ревер, характерен за смокинга, както и класическите детайли при костюма. Това съчетание придава на модела забележителен съвременен дизайн, придържащ се към класиката. Съставът на костюма е 80% „студена вълна“, 18% полиестер и 2% еластан ... съчетание, което е изключително приятно при допир. При изработката на модела отново залагаме основно на „студена вълна“. Тя се произвежда от тънка прежда много фина вълна и затова платът е толкова лек. Облеклата от такива тъкани изолират тялото от външните условия.",
+        "short_text": "",
+        "price": "359.00",
+        "category_id": 8
+    },
+    {
+        "id": 216,
+        "name": "МЪЖКИ КОСТЮМ ФЕРАРА",
+        "image": "/public/uploads/216.jpeg",
+        "description": "Модел Ферара се откроява със своя съвременен дизайн, благодарение на своите интересни фини декорации, забелязващи се по ревера и филетките. Съставът на костюма е 80% „студена вълна“ и 20% полиестер ... съчетание, което е изключително приятно при допир. При изработката на модела отново залагаме основно на „студена вълна“. Тя се произвежда от тънка прежда много фина вълна и затова платът е толкова лек. Облеклата от такива тъкани изолират тялото от външните условия.",
+        "short_text": "",
+        "price": "348.00",
+        "category_id": 8
+    },
+    {
+        "id": 217,
+        "name": "Мъжки костюм",
+        "image": "/public/uploads/217.jpg",
+        "description": "Teнденцията за изнасяне на талията нагоре и оформяне бомбето на ръкава се внедрява и в модел Torino, който обаче е разработен на още по- вталена и скъсена конструкция. Намалените пропорции следват и широчината на сатенения ревер. На едно копче с филетки. Панталонът е втален със страничен контрастен кант от сатен.",
+        "short_text": "",
+        "price": "704.00",
+        "old_price": "880.00",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 218,
+        "name": "Мъжки костюм bat orchid",
+        "image": "/public/uploads/218.jpg",
+        "description": "Съвременна интерпретация на фраг. Tози модел e с дизайн хибрид с жилетка изработени от екслузивни италиански материали. Панталонът е втален и допринася за линията на визията. Сетът е изключително подходящ за сватби и официални събития.",
+        "short_text": "short text here",
+        "price": "704.00",
+        "old_price": "880.00",
+        "category_id": 8
+    },
+    {
+        "id": 219,
+        "name": "Men's Single Breasted",
+        "image": "/public/uploads/219.png",
+        "description": "",
+        "short_text": "",
+        "price": "167.46",
+        "old_price": "239.23",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 220,
+        "name": "Men's Suits Striped Plus",
+        "image": "/public/uploads/220.png",
+        "description": "",
+        "short_text": "",
+        "price": "211.63",
+        "old_price": "529.07",
+        "category_id": 8
+    },
+    {
+        "id": 221,
+        "name": "Men's Suits",
+        "image": "/public/uploads/221.png",
+        "description": "",
+        "short_text": "",
+        "price": "170.09",
+        "old_price": "243.24",
+        "category_id": 8
+    },
+    {
+        "id": 222,
+        "name": "men's 3 piece",
+        "image": "/public/uploads/222.png",
+        "description": "",
+        "short_text": "",
+        "price": "64.50",
+        "old_price": "92.14",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 223,
+        "name": "men dress suit 2",
+        "image": "/public/uploads/223.png",
+        "description": "",
+        "short_text": "",
+        "price": "100.86",
+        "old_price": "144.24",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 224,
+        "name": "mens 3-piece",
+        "image": "/public/uploads/224.png",
+        "description": "",
+        "short_text": "",
+        "price": "165.89",
+        "old_price": "236.98",
+        "category_id": 8
+    },
+    {
+        "id": 225,
+        "name": "men's tuxedo suit slim",
+        "image": "/public/uploads/225.png",
+        "description": "",
+        "short_text": "",
+        "price": "123.00",
+        "old_price": "150.00",
+        "category_id": 8
+    },
+    {
+        "id": 226,
+        "name": "men's suit casual",
+        "image": "/public/uploads/226.png",
+        "description": "",
+        "short_text": "",
+        "price": "247.51",
+        "old_price": "495.03",
+        "category_id": 8
+    },
+    {
+        "id": 227,
+        "name": "men's slim fit 2 piece",
+        "image": "/public/uploads/227.png",
+        "description": "",
+        "short_text": "",
+        "price": "206.59",
+        "old_price": "41.16",
+        "category_id": 8
+    },
+    {
+        "id": 228,
+        "name": "mens pinstripe double breasted 3",
+        "image": "/public/uploads/228.png",
+        "description": "",
+        "short_text": "",
+        "price": "200.74",
+        "old_price": "286.79",
+        "category_id": 8
+    },
+    {
+        "id": 229,
+        "name": "men's suits 2 pieces double breasted",
+        "image": "/public/uploads/229.png",
+        "description": "",
+        "short_text": "",
+        "price": "202.29",
+        "old_price": "404.58",
+        "category_id": 8
+    },
+    {
+        "id": 230,
+        "name": "green men's suits",
+        "image": "/public/uploads/230.png",
+        "description": "",
+        "short_text": "",
+        "price": "102.84",
+        "old_price": "147.06",
+        "category_id": 8
+    },
+    {
+        "id": 231,
+        "name": "Men's Notch lapel collar",
+        "image": "/public/uploads/231.png",
+        "description": "",
+        "short_text": "",
+        "price": "56.09",
+        "old_price": "80.13",
+        "is_featured": 1,
+        "category_id": 8
+    },
+    {
+        "id": 232,
+        "name": "name",
+        "image": "/public/uploads/232.jpg",
+        "description": "",
+        "short_text": "Луксозен мъжки костюм",
+        "price": "355.00",
+        "category_id": 8
+    },
+    {
+        "id": 233,
+        "name": "Костюм Ceremony Slim",
+        "image": "/public/uploads/233.jpg",
+        "description": "long description here",
+        "short_text": "short text here",
+        "price": "540.00",
+        "category_id": 8
+    },
+    {
+        "id": 234,
+        "name": "Костюм Ceremony Slim",
+        "image": "/public/uploads/234.jpg",
+        "description": "Структуриран тъмносив блейзър с отворени черни ревери. Вталена кройка. Два предни джоба с черни филетки, един вмъкнат джоб с кърпичка на нивото на гърдите и хастар с вътрешен джоб. Шлиц на гърба, маншети с копчета и предно закопчаване с копче.",
+        "short_text": "",
+        "price": "820.00",
+        "category_id": 8
+    },
+    {
+        "id": 235,
+        "name": "Костюм Business Regular",
+        "image": "/public/uploads/235.jpg",
+        "description": "long description here",
+        "short_text": "",
+        "price": "399.80",
+        "category_id": 8
+    },
+    {
+        "id": 236,
+        "name": "Костюм Ceremony Regular",
+        "image": "/public/uploads/336.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "459.80",
+        "category_id": 8
+    },
+    {
+        "id": 237,
+        "name": "Костюм Ceremony Slim",
+        "image": "/public/uploads/237.jpg",
+        "description": "Структуриран черен блейзър с релефен десен и отворени ревери. Вталена кройка. Два предни джоба с филетки, един вмъкнат джоб с кърпичка на нивото на гърдите и хастар с вътрешен джоб. Шлиц на гърба, маншети с копчета и предно закопчаване с копче.Едноцветен черен панталон с вталена кройка. Два странични джоба и два джоба на гърба. Колан с гайки и предно закопчаване със скритo копче и цип",
+        "short_text": "",
+        "price": "1200.00",
+        "category_id": 8
+    },
+    {
+        "id": 238,
+        "name": "Черен официален костюм с червена риза",
+        "image": "/public/uploads/238.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "1300.00",
+        "category_id": 8
+    },
+    {
+        "id": 239,
+        "name": "Черен официален костюм с светло синя риза",
+        "image": "/public/uploads/239.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "560.00",
+        "category_id": 8
+    },
+    {
+        "id": 240,
+        "name": "фланелка с лика на Апостола",
+        "image": "/public/uploads/240.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "25.00",
+        "is_featured": 1,
+        "category_id": 7
+    },
+    {
+        "id": 241,
+        "name": "фланелка с Българския герб и надпис",
+        "image": "/public/uploads/241.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "22.00",
+        "is_featured": 1,
+        "category_id": 7
+    },
+    {
+        "id": 242,
+        "name": "фланелк с надпис",
+        "image": "/public/uploads/242.jpg",
+        "description": "",
+        "short_text": "Уникална фланелка за лятото",
+        "price": "23.00",
+        "is_featured": 1,
+        "category_id": 7
+    },
+    {
+        "id": 243,
+        "name": "фланелка с лъв и розетката от плиска",
+        "image": "/public/uploads/243.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "32.00",
+        "category_id": 7
+    },
+    {
+        "id": 244,
+        "name": "Тениска с знака Дуло",
+        "image": "/public/uploads/244.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "25.00",
+        "category_id": 7
+    },
+    {
+        "id": 245,
+        "name": "фланелка с изобразени български традиции",
+        "image": "/public/uploads/245.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "23.00",
+        "category_id": 7
+    },
+    {
+        "id": 246,
+        "name": "фланелка с войн",
+        "image": "/public/uploads/246.png",
+        "description": "",
+        "short_text": "",
+        "price": "19.00",
+        "category_id": 7
+    },
+    {
+        "id": 247,
+        "name": "фланелка mustang",
+        "image": "/public/uploads/247.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "15.00",
+        "category_id": 7
+    },
+    {
+        "id": 248,
+        "name": "фланелка с въл",
+        "image": "/public/uploads/248.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "18.00",
+        "old_price": "25.00",
+        "category_id": 7
+    },
+    {
+        "id": 249,
+        "name": "фланелка GUNS N'ROSES",
+        "image": "/public/uploads/249.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "20.00",
+        "category_id": 7
+    },
+    {
+        "id": 250,
+        "name": "фланелка Българкото знаме",
+        "image": "/public/uploads/250.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "15.00",
+        "category_id": 7
+    },
+    {
+        "id": 251,
+        "name": "фланелка",
+        "image": "/public/uploads/251.jpg",
+        "description": "",
+        "short_text": "фланелка с лъв",
+        "price": "20.00",
+        "category_id": 7
+    },
+    {
+        "id": 252,
+        "name": "фланелка Megadeth",
+        "image": "/public/uploads/252.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "23.00",
+        "category_id": 7
+    },
+    {
+        "id": 253,
+        "name": "фланелка Iron Maden",
+        "image": "/public/uploads/253.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "22.00",
+        "old_price": "30.00",
+        "category_id": 7
+    },
+    {
+        "id": 254,
+        "name": "фланелка на Iron Maden с Българското знаме",
+        "image": "/public/uploads/254.jpg",
+        "description": "",
+        "short_text": "Колекционерска тениска",
+        "price": "32.00",
+        "category_id": 7
+    },
+    {
+        "id": 255,
+        "name": "бяла фланелка на Iron Maden",
+        "image": "/public/uploads/255.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "23.00",
+        "category_id": 7
+    },
+    {
+        "id": 256,
+        "name": "фланелка на Епизот",
+        "image": "/public/uploads/256.jfit",
+        "description": "",
+        "short_text": "",
+        "price": "22.00",
+        "is_featured": 1,
+        "category_id": 7
+    },
+    {
+        "id": 257,
+        "name": "фланелка на Metallica",
+        "image": "/public/uploads/257.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "16.00",
+        "category_id": 7
+    },
+    {
+        "id": 258,
+        "name": "сива фланелка на Metallica",
+        "image": "/public/uploads/258.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "32.00",
+        "category_id": 7
+    },
+    {
+        "id": 259,
+        "name": "фланелка на Rammstein",
+        "image": "/public/uploads/259.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "22.00",
+        "old_price": "29.00",
+        "category_id": 7
+    },
+    {
+        "id": 260,
+        "name": "фланелка на Bon Jovi",
+        "image": "/public/uploads/260.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "25.00",
+        "old_price": "28.00",
+        "category_id": 7
+    },
+    {
+        "id": 261,
+        "name": "фланелка на Slipknot",
+        "image": "/public/uploads/261.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "25.00",
+        "category_id": 7
+    },
+    {
+        "id": 262,
+        "name": "фланелка на България",
+        "image": "/public/uploads/262.jpg",
+        "description": "",
+        "short_text": "Уникална фланелка с два лъва , Българският герб и изобразена България",
+        "price": "32.00",
+        "is_featured": 1,
+        "category_id": 7
+    },
+    {
+        "id": 263,
+        "name": "фланелка на Manowar",
+        "image": "/public/uploads/263.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "25.00",
+        "category_id": 7
+    },
+    {
+        "id": 264,
+        "name": "фланелка на AC/DC",
+        "image": "/public/uploads/264.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "22.00",
+        "category_id": 7
+    },
+    {
+        "id": 265,
+        "name": "фланелка на November's Doomdays",
+        "image": "/public/uploads/265.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "26.00",
+        "old_price": "29.00",
+        "category_id": 7
+    },
+    {
+        "id": 266,
+        "name": "фланелка с Йода",
+        "image": "/public/uploads/266.png",
+        "description": "",
+        "short_text": "",
+        "price": "25.00",
+        "category_id": 7
+    },
+    {
+        "id": 267,
+        "name": "фланелка на Supra",
+        "image": "/public/uploads/267.jpg",
+        "description": "",
+        "short_text": "",
+        "price": "48.00",
+        "old_price": "55.00",
+        "category_id": 7
+    },
+    {
+        "id": 268,
+        "name": "фланелка със скелет скейбордист",
+        "image": "/public/uploads/268.jpg",
+        "description": "",
+        "short_text": "Лимитирана серия",
+        "price": "38.00",
+        "category_id": 7
+    },
+    {
+        "id": 269,
+        "name": "сива фланелка",
+        "image": "/public/uploads/269.jpg",
+        "description": "",
+        "short_text": "Удобна ластична фланелка за трениране",
+        "price": "26.00",
+        "old_price": "29.00",
+        "category_id": 7
+    },
+    {
+        "id": 270,
+        "name": "фланелка с меч",
+        "image": "/public/uploads/270.jfit",
+        "description": "",
+        "short_text": "",
+        "price": "23.00",
+        "category_id": 7
+    }
+]

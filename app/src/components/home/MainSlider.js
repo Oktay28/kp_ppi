@@ -4,12 +4,17 @@ import "react-multi-carousel/lib/styles.css";
 import {
     makeStyles
 } from '@material-ui/core';
+import Img from '../partials/Img';
 
 const useStyles = makeStyles(theme => ({
     slideImg: {
         height: "600px",
         width: "100%",
-        objectFit: "cover"
+        objectFit: "cover",
+        objectPosition: "left center",
+        [theme.breakpoints.down("xs")]: {
+            height: "300px"
+        }
     },
     slideLegend: {
         position: "absolute",
@@ -21,7 +26,10 @@ const useStyles = makeStyles(theme => ({
         transform: "translateX(-50%)",
         padding: "30px",
         borderRadius: "8px",
-        backgroundColor: "rgba(0, 0, 0, .5)"
+        backgroundColor: "rgba(0, 0, 0, .5)",
+        [theme.breakpoints.down("xs")]: {
+            display: "none"
+        }
     }
 }))
 
@@ -49,16 +57,13 @@ const MainSlider = () => {
     return (
         <Carousel responsive={responsive} infinite >
             <div>
-                <img className={classes.slideImg} alt="slider" src="https://scx2.b-cdn.net/gfx/news/hires/2017/goes16satell.jpg" />
-                <p className={classes.slideLegend}>Legend 1</p>
+                <Img className={classes.slideImg} alt="slider" src="/public/images/slide1.jpg" />
             </div>
             <div>
-                <img className={classes.slideImg} alt="slider" src="https://photojournal.jpl.nasa.gov/jpeg/PIA23689.jpg" />
-                <p className={classes.slideLegend}>Legend 2</p>
+                <Img className={classes.slideImg} alt="slider" src="/public/images/slide2.jpg" />
             </div>
             <div>
-                <img className={classes.slideImg} alt="slider" src="https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528_960_720.jpg" />
-                <p className={classes.slideLegend}>Legend 3</p>
+                <Img className={classes.slideImg} alt="slider" src="/public/images/slide3.jpg" />
             </div>
         </Carousel>
     );

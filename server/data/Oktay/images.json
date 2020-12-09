@@ -13,15 +13,15 @@
     },
 
     {
-        "url": "/public/uploads/qke2.png",
+        "url": "/public/uploads/qke2.jpg",
         "product_id": 2
     },
     {
-        "url": "/public/uploads/qke2_1.png",
+        "url": "/public/uploads/qke2_1.jpg",
         "product_id": 2
     },
     {
-        "url": "/public/uploads/qke2_2.png",
+        "url": "/public/uploads/qke2_2.jpg",
         "product_id": 2
     },
 
@@ -36,5 +36,288 @@
     {
         "url": "/public/uploads/qke3_2.webp",
         "product_id": 3
+    },
+
+    {
+        "url": "/public/uploads/qke4.jpg",
+        "product_id": 4
+    },
+    {
+        "url": "/public/uploads/qke4_1.jpg",
+        "product_id": 4
+    },
+    {
+        "url": "/public/uploads/qke4_2.jpg",
+        "product_id": 4
+    },
+
+    {
+        "url": "/public/uploads/qke5.webp",
+        "product_id": 5
+    },
+    {
+        "url": "/public/uploads/qke5_1.webp",
+        "product_id": 5
+    },
+
+    {
+        "url": "/public/uploads/qke6.jpg",
+        "product_id": 6
+    },
+    {
+        "url": "/public/uploads/qke6_1.jpg",
+        "product_id": 6
+    },
+    {
+        "url": "/public/uploads/qke6_2.jpg",
+        "product_id": 6
+    },
+    {
+        "url": "/public/uploads/qke6_3.jpg",
+        "product_id": 6
+    },
+
+    {
+        "url": "/public/uploads/qke7.jpg",
+        "product_id": 7
+    },
+    {
+        "url": "/public/uploads/qke7_1.jpg",
+        "product_id": 7
+    },
+    {
+        "url": "/public/uploads/qke7_2.jpg",
+        "product_id": 7
+    },
+    {
+        "url": "/public/uploads/qke7_3.jpg",
+        "product_id": 7
+    },
+
+    {
+        "url": "/public/uploads/qke8.jpg",
+        "product_id": 8
+    },
+    {
+        "url": "/public/uploads/qke8_1.jpg",
+        "product_id": 8
+    },
+    {
+        "url": "/public/uploads/qke8_2.jpg",
+        "product_id": 8
+    },
+
+    {
+        "url": "/public/uploads/qke9.jpg",
+        "product_id": 9
+    },
+    {
+        "url": "/public/uploads/qke9_1.jpg",
+        "product_id": 9
+    },
+    {
+        "url": "/public/uploads/qke9_2.jpg",
+        "product_id": 9
+    },
+
+    {
+        "url": "/public/uploads/qke10.jpg",
+        "product_id": 10
+    },
+    {
+        "url": "/public/uploads/qke10_1.jpg",
+        "product_id": 10
+    },
+    {
+        "url": "/public/uploads/qke10_2.jpg",
+        "product_id": 10
+    },
+
+    {
+        "url": "/public/uploads/qke11.jpg",
+        "product_id": 11
+    },
+    {
+        "url": "/public/uploads/qke11_1.jpg",
+        "product_id": 11
+    },
+    {
+        "url": "/public/uploads/qke11_2.jpg",
+        "product_id": 11
+    },
+
+    {
+        "url": "/public/uploads/qke12.jpg",
+        "product_id": 12
+    },
+    {
+        "url": "/public/uploads/qke12_1.jpg",
+        "product_id": 12
+    },
+    {
+        "url": "/public/uploads/qke12_2.jpg",
+        "product_id": 12
+    },
+
+    {
+        "url": "/public/uploads/qke13.jpg",
+        "product_id": 13
+    },
+    {
+        "url": "/public/uploads/qke13_1.jpg",
+        "product_id": 13
+    },
+    {
+        "url": "/public/uploads/qke13_2.jpg",
+        "product_id": 13
+    },
+
+    {
+        "url": "/public/uploads/qke14.jpg",
+        "product_id": 14
+    },
+    {
+        "url": "/public/uploads/qke14_1.jpg",
+        "product_id": 14
+    },
+    {
+        "url": "/public/uploads/qke14_2.jpg",
+        "product_id": 14
+    },
+
+    {
+        "url": "/public/uploads/qke15.jpg",
+        "product_id": 15
+    },
+    {
+        "url": "/public/uploads/qke15_1.jpg",
+        "product_id": 15
+    },
+    {
+        "url": "/public/uploads/qke15_2.jpg",
+        "product_id": 15
+    },
+
+    {
+        "url": "/public/uploads/qke16.jpg",
+        "product_id": 16
+    },
+    {
+        "url": "/public/uploads/qke16_1.jpg",
+        "product_id": 16
+    },
+    {
+        "url": "/public/uploads/qke16_2.jpg",
+        "product_id": 16
+    },
+
+    {
+        "url": "/public/uploads/qke17.jpg",
+        "product_id": 17
+    },
+    {
+        "url": "/public/uploads/qke17_1.jpg",
+        "product_id": 17
+    },
+    {
+        "url": "/public/uploads/qke17_2.jpg",
+        "product_id": 17
+    },
+
+    {
+        "url": "/public/uploads/qke18.jpg",
+        "product_id": 18
+    },
+    {
+        "url": "/public/uploads/qke18_1.jpg",
+        "product_id": 18
+    },
+    {
+        "url": "/public/uploads/qke18_2.jpg",
+        "product_id": 18
+    },
+
+    {
+        "url": "/public/uploads/qke19.jpg",
+        "product_id": 19
+    },
+    {
+        "url": "/public/uploads/qke19_1.jpg",
+        "product_id": 19
+    },
+    {
+        "url": "/public/uploads/qke19_2.jpg",
+        "product_id": 19
+    },
+    {
+        "url": "/public/uploads/qke19_3.jpg",
+        "product_id": 19
+    },
+
+    {
+        "url": "/public/uploads/qke20.jpg",
+        "product_id": 20
+    },
+    {
+        "url": "/public/uploads/qke20_1.jpg",
+        "product_id": 20
+    },
+    {
+        "url": "/public/uploads/qke20_2.jpg",
+        "product_id": 20
+    },
+
+    {
+        "url": "/public/uploads/riza1.jpg",
+        "product_id": 21
+    },
+    {
+        "url": "/public/uploads/riza1_1.jpg",
+        "product_id": 21
+    },
+    {
+        "url": "/public/uploads/riza1_2.jpg",
+        "product_id": 21
+    },
+
+    {
+        "url": "/public/uploads/riza2.jpg",
+        "product_id": 22
+    },
+    {
+        "url": "/public/uploads/riza2_1.jpg",
+        "product_id": 22
+    },
+    {
+        "url": "/public/uploads/riza2_2.jpg",
+        "product_id": 22
+    },
+
+    {
+        "url": "/public/uploads/riza3.jpg",
+        "product_id": 23
+    },
+    {
+        "url": "/public/uploads/riza3_1.jpg",
+        "product_id": 23
+    },
+    {
+        "url": "/public/uploads/riza3_2.webp",
+        "product_id": 23
+    },
+
+    {
+        "url": "/public/uploads/riza4.jpg",
+        "product_id": 24
+    },
+    {
+        "url": "/public/uploads/riza4_1.jpg",
+        "product_id": 24
+    },
+    {
+        "url": "/public/uploads/riza4_2.webp",
+        "product_id": 24
     }
+
+    
 ]

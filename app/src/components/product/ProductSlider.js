@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import {
     makeStyles
 } from '@material-ui/core';
+import Img from '../partials/Img';
 
 const useStyles = makeStyles(theme => ({
     slideImg: {
@@ -35,20 +36,19 @@ const responsive = {
     }
   };
 
-const ProductSlider = () => {
+const ProductSlider = ({images}) => {
     const classes = useStyles();
 
     return (
         <Carousel responsive={responsive} infinite >
-            <div>
-                <img className={classes.slideImg} alt="slider" src="https://scx2.b-cdn.net/gfx/news/hires/2017/goes16satell.jpg" />
-            </div>
-            <div>
-                <img className={classes.slideImg} alt="slider" src="https://photojournal.jpl.nasa.gov/jpeg/PIA23689.jpg" />
-            </div>
-            <div>
-                <img className={classes.slideImg} alt="slider" src="https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528_960_720.jpg" />
-            </div>
+            {
+                images.map(image => (
+                    <div key={image.id}>
+                        <Img className={classes.slideImg} alt="slider" src={image.url} />
+                    </div>
+                ))
+            }
+           
         </Carousel>
     );
 }

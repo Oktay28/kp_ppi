@@ -28,6 +28,7 @@ const PRODUCTS = gql`
                 old_price
                 short_text
                 is_featured
+                image
             }
             count
         }

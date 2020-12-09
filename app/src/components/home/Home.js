@@ -18,6 +18,16 @@ const useStyles = makeStyles(theme => ({
         "&:hover": {
             transform: "scale(1.02)"
         }
+    },
+    mainTitle: {
+        fontSize: "50px",
+        textAlign: "center",
+        margin: "100px 0 50px",
+        fontWeight: "bold",
+        color: theme.palette.primary.dark,
+        [theme.breakpoints.down("xs")] : {
+            fontSize: "30px"
+        }
     }
 }));
 
@@ -31,10 +41,16 @@ const Home = () => {
                 <MainSlider />
             </div>
 
-            <div>
+            <div className="mb-45">
                 <Link to="/products?discount=1">
                     <Img src="/public/images/sale.png" className={classes.banner} />
                 </Link>
+            </div>
+
+            <div>
+                <h2 className={classes.mainTitle}>
+                    Special Products
+                </h2>
             </div>
 
             <div className="mb-45">

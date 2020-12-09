@@ -13,6 +13,10 @@ const PRODUCT = gql`
             Favourites {
                 id
             }
+            images {
+                id
+                url
+            }
         }
         sizes {
             id

@@ -4,14 +4,17 @@ import "react-multi-carousel/lib/styles.css";
 import {
     makeStyles
 } from '@material-ui/core';
-import {useProductsLazyQuery} from '../products/graphql';
+import {useFeaturedProductsLazyQuery} from './graphql';
 import Loader from '../partials/Loader';
+import Img from '../partials/Img';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     slideImg: {
         height: "600px",
         width: "100%",
-        objectFit: "cover"
+        objectFit: "cover",
+        objectPosition: "top center"
     },
     slideLegend: {
         position: "absolute",
@@ -24,18 +27,23 @@ const useStyles = makeStyles(theme => ({
         padding: "30px",
         borderRadius: "8px",
         backgroundColor: "rgba(0, 0, 0, .5)"
+    },
+    slide: {
+        padding: "30px",
+        cursor: "pointer",
+        display: "block"
     }
 }))
 
 const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 1,
+      items: 3,
       slidesToSlide: 1
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 1,
+      items: 2,
       slidesToSlide: 1
     },
     mobile: {
@@ -48,34 +56,33 @@ const responsive = {
 const FeaturedSlider = () => {
     const classes = useStyles();
 
-    const [fetchProducts, {data}] = useProductsLazyQuery();
+    const [fetchProducts, {data}] = useFeaturedProductsLazyQuery();
 
     useEffect(() => {
-        fetchProducts({variables: {
-            featured: 1
-        }});
+        fetchProducts();
     }, [])
 
     if(!data) {
         return <Loader />
     }
 
-    const products = data.products || [];
+    const products = data.featuredProducts || [];
 
     return (
-        <Carousel responsive={responsive} infinite >
-            <div>
-                <img className={classes.slideImg} alt="slider" src="https://scx2.b-cdn.net/gfx/news/hires/2017/goes16satell.jpg" />
-                <p className={classes.slideLegend}>Legend 1</p>
-            </div>
-            <div>
-                <img className={classes.slideImg} alt="slider" src="https://photojournal.jpl.nasa.gov/jpeg/PIA23689.jpg" />
-                <p className={classes.slideLegend}>Legend 2</p>
-            </div>
-            <div>
-                <img className={classes.slideImg} alt="slider" src="https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528_960_720.jpg" />
-                <p className={classes.slideLegend}>Legend 3</p>
-            </div>
+        <Carousel responsive={responsive} infinite  autoPlay={true}
+        timer={3000}
+        animation={"slide"}
+        indicators={true}
+        timeout={300}
+        navButtonsAlwaysVisible={true} >
+            {
+                products.map(product => (
+                    <Link to={`/product/${product.id}`} key={product.id} className={classes.slide}>
+                        <Img className={classes.slideImg} alt="slider" src={product.image} />
+                    </Link>
+                ))
+            }
+         
         </Carousel>
     );
 }

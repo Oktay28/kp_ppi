@@ -20,6 +20,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import GlobalContext from '../../context/GlobalContext';
 import {useCartLazyProducts} from './graphql';
 import Loader from '../Loader';
+import Img from '../Img';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -192,7 +193,7 @@ const Cart = () => {
             <Grid container spacing={2} className="mb-30">
               <Grid item xs={12} md={8}>
                   <div className={`${classes.productRow} ${classes.productImageRow}`}>
-                    <img src="https://photojournal.jpl.nasa.gov/jpeg/PIA23689.jpg" className={classes.img} />
+                    <Img src={product.image} className={classes.img} />
                     <div className={classes.productName}>
                       {product.name} <span className={classes.size}>{item.size}</span> 
                     </div>

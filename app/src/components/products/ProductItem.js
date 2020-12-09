@@ -4,6 +4,7 @@ import {
     Grid
 } from '@material-ui/core';
 import {Link} from 'react-router-dom';
+import Img from '../partials/Img';
 
 const useStyles = makeStyles(theme => ({
     productItem: {
@@ -38,17 +39,19 @@ const useStyles = makeStyles(theme => ({
     },
     productTitle: {
         fontSize: "18px",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        height: "36px"
     },
     shortText: {
         color: theme.palette.primary.main,
         fontSize: "11px",
         fontStyle: "italic",
-        marginTop: "5px"
+        marginTop: "5px",
+        height: "11px"
     },
     productImage: {
         width: "100%",
-        height: "auto",
+        height: "300px",
         objectFit: "cover",
         marginTop: "30px"
     },
@@ -87,7 +90,7 @@ const ProductItem = ({product = {}}) => {
                     {product.short_text}
                 </p>
                 <div>
-                    <img alt="product" src="https://wilderness-production.imgix.net/80a27c3287024f94f51fcd34e06d72aa/Marmot-Eldridge.jpg?auto=compress%2Cformat&fit=crop&h=500&ixlib=php-3.3.0&w=500&wpsize=square_med" className={classes.productImage}/>
+                    <Img alt="product" src={product.image} className={classes.productImage}/>
                 </div>
                 <div className={classes.productFooter}>
                     <span className={classes.productPrice}>

@@ -71,7 +71,7 @@ const Filter = () => {
 
     const [form, setForm] = useState({
       name: params.get("name") || "",
-      new: params.get("new") || "",
+      new: +params.get("new") || "",
       featured: +params.get("featured") || 0,
       min: +params.get("min") || 0,
       max: +params.get("max") || 10000,
@@ -117,7 +117,9 @@ const Filter = () => {
 
     function submitHandler(event) {
       event.preventDefault();
-      push(`${pathname}?${new URLSearchParams(form).toString()}`);
+      const query = new URLSearchParams(form);
+      query.set("page", 1);
+      push(`${pathname}?${query.toString()}`);
     }
 
     function reset() {

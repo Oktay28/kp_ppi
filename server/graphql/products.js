@@ -13,6 +13,7 @@ const productType = gql`
         Favourites: Favourite
         category_id: ID
         is_featured: Int
+        images: [Image]
     }
 
     type Products {
@@ -36,9 +37,14 @@ const productType = gql`
         products(filter: ProductsFilter): Products
         product(id: ID!, userId: ID): Product
         cartItems(ids: [ID]!): [Product]
+        featuredProducts: [Product]
     }
 
 `
+function formatDate1(d) {
+    d.setDate(d.getDate() + 1)
+    return `${d.getFullYear()}-${d.getUTCMonth() + 1}-${`${d.getUTCDate() < 10 ? `0${d.getUTCDate()}` : d.getUTCDate()}`}`
+}
 
 const productQuery = {
     product: async(parent, {id, userId}, {models}) => {
@@ -63,7 +69,15 @@ const productQuery = {
             nest: true,
             raw: true
         });
-
+        let images = [];
+        if(product) {
+            images = await models.Images.findAll({
+                where: {
+                    product_id: product.id
+                }
+            })
+        }
+        product.images = images;
         return product;
     },
     products: async(parent, {filter}, {models}) => {
@@ -94,19 +108,20 @@ const productQuery = {
                 [models.Sequelize.Op.not]: null
             }
         }
-        console.log(where)
+        
         if(filter.is_new) {
             const d = new Date();
-            d.setMonth(d.getMonth() - 3);
+            d.setDate(d.getDate() - 31)
+            console.log(formatDate1(d), formatDate1(new Date()))
             where.createdAt = {
-                [models.Sequelize.Op.between]: [d.toISOString, models.Sequelize.fn('GETDATE')]
+                [models.Sequelize.Op.between]: [formatDate1(d), formatDate1(new Date())]
             }
         }
 
         where.price = {
             [models.Sequelize.Op.between]: [filter.min || 0, filter.max || 10000]
         }
-
+        
         const products = await models.Products.findAll({
             where,
             raw: true,
@@ -120,7 +135,7 @@ const productQuery = {
             ],
             offset: ((filter.page || 1) - 1) * (filter.limit || 30)
         })
-
+        console.log(filter)
         const count = await models.Products.count({
             where
         })
@@ -135,6 +150,16 @@ const productQuery = {
         const products = await models.Products.findAll({
             where: {
                 id: ids
+            }
+        })
+
+        return products;
+    },
+    featuredProducts: async(parent, args, {models}) => {
+        const products = await models.Products.findAll({
+            raw: true,
+            where: {
+                is_featured: 1
             }
         })
 

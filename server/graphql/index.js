@@ -5,6 +5,7 @@ const {sizeType, sizeQuery} = require("./size");
 const {favouriteType, favouriteQuery, favouriteMutation} = require("./favourites");
 const {categoryQuery, categoryType} = require("./categories");
 const {orderType, orderMutation} = require("./orders");
+const {imageType} = require("./images");
 
 const schema = gql`
 
@@ -21,7 +22,7 @@ const schema = gql`
     }
 
 `
-const typeDefs = [schema, productType, userType, sizeType, favouriteType, categoryType, orderType];
+const typeDefs = [schema, productType, userType, sizeType, favouriteType, categoryType, orderType, imageType];
 const resolvers = {
     Query: {...productQuery, ...userQuery, ...sizeQuery, ...categoryQuery, ...favouriteQuery},
     Mutation: {

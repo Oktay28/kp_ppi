@@ -13,6 +13,7 @@ import GlobalContext from '../context/GlobalContext';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import {useCartLazyProducts} from "../partials/cart/graphql";
 import Loader from '../partials/Loader';
+import Img from '../partials/Img';
 
 const useStyle = makeStyles(theme => ({
     root: {
@@ -114,7 +115,7 @@ const Cart = () => {
                     total += (item.count * +product.price);
                     return(
                         <div className={classes.productRow} key={i}>
-                        <img src="https://myoffices.com/code/images/pictures/5.jpg" className={classes.productImage} />
+                        <Img src={product.image} className={classes.productImage} />
 
                         <div className={classes.productData}>
                             <div className={classes.productName}>
@@ -131,7 +132,7 @@ const Cart = () => {
                             <div className={classes.productBottom}>
                             <div className="btn-group">
                                 <Button size="small" variant="contained" color="primary" className={classes.optionButton} onClick={() => changeCount(product.id, item.size, +1)}>+</Button>
-                                <TextField value={item.count} className={classes.counter} name="asd" type="text" variant="outlined" readOnly />
+                                <TextField value={item.count} className={classes.counter} name="asd" type="text" variant="outlined" readOnly={true} />
                                 <Button size="small" variant="contained" color="primary" className={classes.optionButton} onClick={() => item.count == 1 ? null : changeCount(product.id, item.size, -1)}>-</Button>
                             </div>
 

@@ -5,6 +5,9 @@ const models = require("./models");
 const {typeDefs, resolvers} = require("./graphql");
 const cors = require("cors");
 
+const products = require("./data/Lubo/products.json");
+const images = require("./data/Lubo/images.json");
+
 async function connectDB(){
     await models.sequelize.authenticate();
     await models.sequelize.sync();
@@ -30,8 +33,22 @@ const server = new ApolloServer({
     }
 })
 
-app.get("/", (req, res) => {
-    return res.send("asdaa")
+app.get("/", async (req, res) => {
+    try {
+        await models.Products.bulkCreate(products);
+        await models.Images.bulkCreate(images);
+    }
+ 
+    catch(e) {
+        console.log(e.message);
+    }
+    // const images = products.map(item => ({
+    //     url: item.image,
+    //     product_id: item.id
+    // }))
+
+
+    return res.send("a")
 })
 
 server.applyMiddleware({app})

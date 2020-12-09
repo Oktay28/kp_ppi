@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import Loader from '../partials/Loader';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import Img from '../partials/Img';
 
 const useStyles = makeStyles(theme => ({
     favourites: {
@@ -90,7 +91,7 @@ const Favourites = () => {
                         <div className={classes.productRow} key={product.id}>
                         <Link to={`/products/${product.Product.id}`} className={classes.productLeft} >
                                 <div>
-                                    <img src="https://images.ctfassets.net/hrltx12pl8hq/VZW7M82mrxByGHjvze4wu/b8d827530fa4f4619748010ada62765d/shutterstock_741805882_C.jpg?fit=fill&w=800&h=450" className={classes.productImage} />
+                                    <Img src={product.Product.image} className={classes.productImage} />
                                 </div>
                                 <div className={classes.productName}>
                                     {product.Product.name}

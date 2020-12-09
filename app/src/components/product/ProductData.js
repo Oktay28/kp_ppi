@@ -86,11 +86,15 @@ const ProductData = ({product = {}, sizes, user, addToCart}) => {
                         {product.name}
                     </h3>
                     <div className={classes.price}>
-                        {product.price} lv.
+                        {(+product.price).toFixed(2)} лв.
+                        {
+                            product.old_price && (
+                                <span className={classes.oldPrice}>
+                                    {(+product.old_price).toFixed(2)} лв.
+                                </span>
+                            )
+                        }
 
-                        <span className={classes.oldPrice}>
-                            {product.old_price} lv.
-                        </span>
                     </div>
                     <div className="mb-15">
                         {product.short_text}

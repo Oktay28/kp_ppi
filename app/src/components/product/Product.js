@@ -35,7 +35,7 @@ const Product = () => {
         <div>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={7}>
-                    <ProductSlider />
+                    <ProductSlider images={product.images || []}/>
                 </Grid>
 
                 <Grid item xs={12} md={5}>

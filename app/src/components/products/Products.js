@@ -6,12 +6,14 @@ import {
 import ProductItem from './ProductItem';
 import Filter from './Filter';
 import {useProductsLazyQuery} from './graphql';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useHistory} from 'react-router-dom';
 import Loader from '../partials/Loader';
+import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles(theme => ({
     container: {
-        padding: "30px"
+        padding: "30px",
+        marginBottom: "50px"
     },
     empty: {
         fontSize: "26px",
@@ -26,6 +28,7 @@ const Products = () => {
     const [fetchProducts, {data}] = useProductsLazyQuery();
     const {search} = useLocation();
     const query = new URLSearchParams(search);
+    const {push} = useHistory();
     query.delete("modal");
     
     useEffect(() => {
@@ -43,11 +46,20 @@ const Products = () => {
         });
     }, [query.toString()]);
 
+    const pageChange = (event, page) => {
+        query.set("page", page);
+        const redirect = query.toString();
+        console.log(redirect);
+        push(`/products?${redirect}`)
+    }
+
     if(!data) {
         return <Loader />
     }
+    
 
     const products = data.products?.products || [];
+    const count = data.products?.count || 0;
 
     return (
         <div>
@@ -61,6 +73,14 @@ const Products = () => {
                 }
 
             </Grid>
+            <div className="d-flex justify-content-center mb-45">
+                {
+                    count > 30 ? (
+                        <Pagination count={Math.ceil(count / 30)} page={+(query.get("page")) || 1} onChange={pageChange} color="primary" />
+                    ) : null
+                }
+                
+            </div>
         </div>
     );
 }
