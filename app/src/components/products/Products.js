@@ -40,7 +40,7 @@ const Products = () => {
                 page: +query.get("page"),
                 min: +query.get("min"),
                 max: +query.get("max"),
-                category_id: query.get("category"),
+                category: +query.get("category") || null ,
                 discount: +query.get("discount")
             }
         });

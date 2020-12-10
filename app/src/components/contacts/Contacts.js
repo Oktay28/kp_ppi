@@ -66,7 +66,8 @@ const useStyles = makeStyles(theme => ({
         }
     },
     text: {
-        fontSize: "20px"
+        fontSize: "20px",
+        lineHeight: 1.2
     },
     colRight: {
         padding: "50px",
@@ -98,7 +99,7 @@ const Contacts = () => {
                     </h3>
                     <div className="d-flex mb-15 align-items-center">
                         <LocalPhoneIcon className={classes.contactIcon}/>
-                        <a href="tel:08 888 888 88" className={classes.link}>08 888 888 88</a>
+                        <a href="tel:08 7342 1818" className={classes.link}>08 7342 1818</a>
                     </div>
                     <div className={classes.separator} />
 
@@ -113,7 +114,7 @@ const Contacts = () => {
 
                     <div className="d-flex mb-15 align-items-center">
                         <MailOutlineIcon className={classes.contactIcon}/>
-                        <a href="mailto:asdasd@asd.asd" className={classes.link}>asdasd@asd.asd</a>
+                        <a href="mailto:iron.wolf@gmail.com" className={classes.link}>iron.wolf@gmail.com</a>
                     </div>
                     <div className={classes.separator} />
 

@@ -86,16 +86,6 @@
         "category_id": 9
     },
     {
-        "id": 190,
-        "name": "червен суитшърт",
-        "image": "/public/uploads/190.jfit",
-        "description": "",
-        "short_text": "",
-        "price": "42.00",
-        "old_price": "65.00",
-        "category_id": 9
-    },
-    {
         "id": 191,
         "name": "суитшърт",
         "image": "/public/uploads/191.jpg",
@@ -140,16 +130,6 @@
         "description": "",
         "short_text": "",
         "price": "15.00",
-        "category_id": 9
-    },
-    {
-        "id": 196,
-        "name": "Тигров суитшърт на Adidas",
-        "image": "/public/uploads/196.jfit",
-        "description": "",
-        "short_text": "",
-        "price": "90.00",
-        "old_price": "110.00",
         "category_id": 9
     },
     {
@@ -231,16 +211,6 @@
         "category_id": 9
     },
     {
-        "id": 205,
-        "name": "Син суитшърт с маска",
-        "image": "/public/uploads/205.jfit",
-        "description": "",
-        "short_text": "",
-        "price": "32.00",
-        "old_price": "40.00",
-        "category_id": 9
-    },
-    {
         "id": 206,
         "name": "сив суитшърт",
         "image": "/public/uploads/206.jpg",
@@ -266,15 +236,6 @@
         "description": "",
         "short_text": "",
         "price": "35.00",
-        "category_id": 9
-    },
-    {
-        "id": 209,
-        "name": "Сив суитшърт с черни ракави",
-        "image": "/public/uploads/209.jfit",
-        "description": "",
-        "short_text": "",
-        "price": "20.00",
         "category_id": 9
     },
     {
@@ -541,7 +502,7 @@
     {
         "id": 236,
         "name": "Костюм Ceremony Regular",
-        "image": "/public/uploads/336.jpg",
+        "image": "/public/uploads/236.jpg",
         "description": "",
         "short_text": "",
         "price": "459.80",
@@ -724,16 +685,6 @@
         "category_id": 7
     },
     {
-        "id": 256,
-        "name": "фланелка на Епизот",
-        "image": "/public/uploads/256.jfit",
-        "description": "",
-        "short_text": "",
-        "price": "22.00",
-        "is_featured": 1,
-        "category_id": 7
-    },
-    {
         "id": 257,
         "name": "фланелка на Metallica",
         "image": "/public/uploads/257.jpg",
@@ -785,7 +736,7 @@
         "name": "фланелка на България",
         "image": "/public/uploads/262.jpg",
         "description": "",
-        "short_text": "Уникална фланелка с два лъва , Българският герб и изобразена България",
+        "short_text": "Уникална фланелка",
         "price": "32.00",
         "is_featured": 1,
         "category_id": 7
@@ -854,15 +805,6 @@
         "short_text": "Удобна ластична фланелка за трениране",
         "price": "26.00",
         "old_price": "29.00",
-        "category_id": 7
-    },
-    {
-        "id": 270,
-        "name": "фланелка с меч",
-        "image": "/public/uploads/270.jfit",
-        "description": "",
-        "short_text": "",
-        "price": "23.00",
         "category_id": 7
     }
 ]

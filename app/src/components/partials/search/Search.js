@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import {useSearchLazyQuery} from './graphql';
 import Loader from '../Loader';
+import Img from '../Img';
 
 const useStyles = makeStyles(theme => ({
   searchDialog: {
@@ -131,7 +132,7 @@ const Search = () => {
                     products.map(product => (
                       <Link to={`/products/${product.id}`} className="no-decoration" key={product.id} >
                         <div className={classes.searchRow}>
-                        <img src="https://s23527.pcdn.co/wp-content/uploads/2020/01/100k-moon.jpg.optimal.jpg" className={classes.searchImg} />
+                        <Img src={product.image} className={classes.searchImg} />
                         <span className={classes.searchName}>
                           {product.name}
                         </span>

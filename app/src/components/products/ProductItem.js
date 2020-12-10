@@ -40,14 +40,16 @@ const useStyles = makeStyles(theme => ({
     productTitle: {
         fontSize: "18px",
         fontWeight: "bold",
-        height: "36px"
+        height: "36px",
+        overflow: "hidden"
     },
     shortText: {
         color: theme.palette.primary.main,
         fontSize: "11px",
         fontStyle: "italic",
         marginTop: "5px",
-        height: "11px"
+        height: "11px",
+        overflow: "hidden"
     },
     productImage: {
         width: "100%",

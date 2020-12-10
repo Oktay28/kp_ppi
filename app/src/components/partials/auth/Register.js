@@ -49,8 +49,6 @@ const Login = () => {
 
                     if (!values.name) {
                         errors.name = 'Required'
-                    } else if (!(/^[a-zA-Z ]+$/.test(values.name))) {
-                        errors.name = "Invalid format"
                     }
 
                     if (!values.password) {
@@ -89,7 +87,7 @@ const Login = () => {
                             <TextField required onChange={handleChange} onBlur={(event) => { handleBlur(event); setPasswordFocus(false) }} onFocus={() => setPasswordFocus(true)} error={!!(errors.password && touched.password)} value={values.password} name="password" label="Password" type="password" variant="outlined" fullWidth className="mb-15" helperText={(errors.password && touched.password && errors.password) || ""} />
                             {
                                 (passwordFocus && (!errors.password)) ?
-                                    <PasswordStrengthBar password={values.password} /> : ""
+                                    <PasswordStrengthBar className="mb-15" password={values.password} /> : ""
                             }
 
                             <TextField required onChange={handleChange} onBlur={handleBlur} error={!!(errors.repeatPassword && touched.repeatPassword)} name="repeatPassword" label="Repeat Password" type="password" variant="outlined" fullWidth className="mb-15" helperText={(errors.repeatPassword && touched.repeatPassword && errors.repeatPassword) || ""} />

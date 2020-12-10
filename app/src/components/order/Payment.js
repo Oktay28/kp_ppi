@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {Formik} from 'formik';
 import {
     TextField,
@@ -16,6 +16,7 @@ import 'react-credit-cards/es/styles-compiled.css';
 
 const Payment = ({next, submitForm, form = {}, user}) => {
     const formRef = useRef();
+
     useEffect(() => {
         if(next) {
             formRef.current.handleSubmit()
@@ -153,7 +154,7 @@ const Payment = ({next, submitForm, form = {}, user}) => {
                                                     </Grid>
                                                     <Grid item xs={4}>
                                                         <TextField size="small" onChange={(event) => {
-                                                                    const value = event.target.slice(0, 3);
+                                                                    const value = event.target.value.slice(0, 3);
                                                                     setFieldValue("cvv", value);
                                                                 }} onBlur={handleBlur} error={!!(errors.cvv && touched.cvv)} value={values.cvv} required={values.payment == 3} label="cvv" name="cvv" variant="outlined" type="password" fullWidth className="mb-15" helperText={(errors.cvv && touched.cvv && errors.cvv) || ""} />
                                                     </Grid>

@@ -126,7 +126,7 @@ const productQuery = {
             where,
             raw: true,
             nest: true,
-            limit: 30,
+            limit: (filter.limit || 30),
             include: [
                 {
                     model: models.Category,
@@ -135,7 +135,7 @@ const productQuery = {
             ],
             offset: ((filter.page || 1) - 1) * (filter.limit || 30)
         })
-        console.log(filter)
+        console.log(filter.limit || 30)
         const count = await models.Products.count({
             where
         })

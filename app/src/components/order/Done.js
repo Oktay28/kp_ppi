@@ -36,6 +36,7 @@ const Done = ({data}) => {
         if(isSave) {
             saveCard({
                 variables: {
+                    name: data.form3.name,
                     cvv: data.form3.cvv,
                     month: data.form3.month,
                     year: data.form3.year,
